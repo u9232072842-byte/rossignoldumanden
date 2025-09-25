@@ -66,20 +66,22 @@ export default function Home() {
 
         <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-              <div className="flex flex-col justify-center space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                    La Voix d'une Génération
-                  </h2>
-                  <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                    Depuis trois décennies, Djessou Manding, surnommée affectueusement "Le Rossignol du Manding", captive les publics du monde entier avec sa voix soul et ses mélodies envoûtantes. Sa musique est un pont entre la tradition mandingue et les sonorités modernes, créant une expérience sonore unique et intemporelle.
-                  </p>
-                </div>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Née au cœur d'une famille de griots, la musique a toujours été sa vocation. Cet anniversaire de 30 ans de carrière n'est pas seulement une célébration de sa musique, mais aussi un hommage à un héritage culturel riche qu'elle continue de partager avec passion et générosité.
-                </p>
-              </div>
+            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+              <Card className="shadow-xl">
+                  <CardHeader>
+                    <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                      La Voix d'une Génération
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground md:text-xl/relaxed">
+                      Depuis trois décennies, Djessou Manding, surnommée affectueusement "Le Rossignol du Manding", captive les publics du monde entier avec sa voix soul et ses mélodies envoûtantes. Sa musique est un pont entre la tradition mandingue et les sonorités modernes, créant une expérience sonore unique et intemporelle.
+                    </p>
+                    <p className="text-muted-foreground md:text-xl/relaxed">
+                      Née au cœur d'une famille de griots, la musique a toujours été sa vocation. Cet anniversaire de 30 ans de carrière n'est pas seulement une célébration de sa musique, mais aussi un hommage à un héritage culturel riche qu'elle continue de partager avec passion et générosité.
+                    </p>
+                  </CardContent>
+              </Card>
               <div className="flex items-center justify-center">
                 <div className="relative p-2 rounded-lg shadow-2xl bg-card">
                    {aboutImage && (
