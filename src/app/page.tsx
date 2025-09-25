@@ -67,7 +67,7 @@ export default function Home() {
         <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-              <Card className="shadow-xl">
+              <Card className="shadow-xl text-center lg:text-left">
                   <CardHeader>
                     <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl md:text-5xl">
                       La Voix d'une Génération
