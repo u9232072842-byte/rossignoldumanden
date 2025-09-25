@@ -22,11 +22,11 @@ import type { GenerateSetlistSuggestionsOutput } from '@/ai/flows/generate-setli
 import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
-  eventStyle: z.string().min(3, 'Event style is required.'),
-  eventDuration: z.string().min(1, 'Event duration is required.'),
-  eventFlow: z.string().min(10, 'Event flow description is required.'),
-  albumTracks: z.string().min(10, 'Please provide some album tracks.'),
-  concertClassics: z.string().min(10, 'Please provide some concert classics.'),
+  eventStyle: z.string().min(3, "Le style de l'événement est requis."),
+  eventDuration: z.string().min(1, "La durée de l'événement est requise."),
+  eventFlow: z.string().min(10, "La description du déroulement de l'événement est requise."),
+  albumTracks: z.string().min(10, 'Veuillez fournir quelques titres d’albums.'),
+  concertClassics: z.string().min(10, 'Veuillez fournir quelques classiques de concert.'),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -54,10 +54,10 @@ export default function SetlistGeneratorPage() {
       const response = await generateSetlistSuggestionsAction(values);
       setResult(response);
     } catch (error) {
-      console.error('Error generating setlist:', error);
+      console.error('Erreur lors de la génération de la setlist:', error);
       toast({
-        title: 'Error',
-        description: 'Failed to generate setlist suggestions. Please try again.',
+        title: 'Erreur',
+        description: 'Échec de la génération des suggestions de setlist. Veuillez réessayer.',
         variant: 'destructive',
       });
     } finally {
@@ -70,16 +70,16 @@ export default function SetlistGeneratorPage() {
       <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
         <Sparkles className="h-12 w-12 text-primary" />
         <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-6xl">
-          AI Setlist Generator
+          Générateur de Setlist IA
         </h1>
         <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
-          Craft the perfect performance. Describe your event, provide song choices, and let our AI create a tailored setlist for you.
+          Créez la performance parfaite. Décrivez votre événement, fournissez des choix de chansons, et laissez notre IA créer une setlist sur mesure pour vous.
         </p>
       </div>
 
       <Card className="shadow-lg">
         <CardHeader>
-          <CardTitle className="font-headline">Event Details</CardTitle>
+          <CardTitle className="font-headline">Détails de l'événement</CardTitle>
         </CardHeader>
         <CardContent>
           <Form {...form}>
@@ -90,9 +90,9 @@ export default function SetlistGeneratorPage() {
                   name="eventStyle"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Event Style</FormLabel>
+                      <FormLabel>Style de l'événement</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., Acoustic Concert, Festival, Private Party" {...field} />
+                        <Input placeholder="ex: Concert acoustique, Festival, Fête privée" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -103,9 +103,9 @@ export default function SetlistGeneratorPage() {
                   name="eventDuration"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Event Duration</FormLabel>
+                      <FormLabel>Durée de l'événement</FormLabel>
                       <FormControl>
-                        <Input placeholder="e.g., 90 minutes, 2 hours" {...field} />
+                        <Input placeholder="ex: 90 minutes, 2 heures" {...field} />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -117,10 +117,10 @@ export default function SetlistGeneratorPage() {
                 name="eventFlow"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Desired Event Flow / Mood</FormLabel>
+                    <FormLabel>Déroulement / Ambiance souhaitée</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="e.g., High-energy opening, emotional mid-section, grand finale..."
+                        placeholder="ex: Ouverture énergique, section médiane émouvante, grand final..."
                         {...field}
                       />
                     </FormControl>
@@ -133,9 +133,9 @@ export default function SetlistGeneratorPage() {
                 name="albumTracks"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Album Tracks (comma separated)</FormLabel>
+                    <FormLabel>Titres d'albums (séparés par des virgules)</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Song A, Song B, Song C..." {...field} />
+                      <Textarea placeholder="Chanson A, Chanson B, Chanson C..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -146,9 +146,9 @@ export default function SetlistGeneratorPage() {
                 name="concertClassics"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Concert Classics (comma separated)</FormLabel>
+                    <FormLabel>Classiques de concert (séparés par des virgules)</FormLabel>
                     <FormControl>
-                      <Textarea placeholder="Classic X, Classic Y, Classic Z..." {...field} />
+                      <Textarea placeholder="Classique X, Classique Y, Classique Z..." {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -158,12 +158,12 @@ export default function SetlistGeneratorPage() {
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Generating...
+                    Génération en cours...
                   </>
                 ) : (
                   <>
                     <Sparkles className="mr-2 h-4 w-4" />
-                    Generate Setlist
+                    Générer la Setlist
                   </>
                 )}
               </Button>
@@ -178,7 +178,7 @@ export default function SetlistGeneratorPage() {
                 <CardHeader>
                     <CardTitle className="font-headline flex items-center gap-2">
                         <Music className="w-6 h-6 text-primary"/>
-                        Your Suggested Setlist
+                        Votre Setlist Suggérée
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
@@ -187,7 +187,7 @@ export default function SetlistGeneratorPage() {
                         <p className="text-muted-foreground whitespace-pre-wrap">{result.setlist}</p>
                     </div>
                     <div>
-                        <h3 className="font-bold text-lg mb-2">Rationale</h3>
+                        <h3 className="font-bold text-lg mb-2">Justification</h3>
                         <p className="text-muted-foreground whitespace-pre-wrap">{result.rationale}</p>
                     </div>
                 </CardContent>

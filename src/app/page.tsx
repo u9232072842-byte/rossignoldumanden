@@ -30,11 +30,11 @@ export default function Home() {
               Le Rossignol du Manding
             </h1>
             <p className="mt-4 max-w-2xl text-lg md:text-xl text-foreground/80">
-              Celebrating 30 years of the golden voice of Djessou Manding. Experience the legacy, the music, the soul.
+              Célébrant 30 ans de la voix d'or de Djessou Manding. Vivez l'héritage, la musique, l'âme.
             </p>
             <div className="mt-6">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                <Link href="#events">View Upcoming Events</Link>
+                <Link href="#events">Voir les événements à venir</Link>
               </Button>
             </div>
           </div>
@@ -44,9 +44,9 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">Upcoming Events</h2>
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">Événements à venir</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-                  Join us for unforgettable nights of music and celebration.
+                  Rejoignez-nous pour des nuits inoubliables de musique et de célébration.
                 </p>
               </div>
             </div>
@@ -66,14 +66,14 @@ export default function Home() {
                   </div>
                   <div className="md:w-1/2 flex flex-col">
                     <CardHeader>
-                      <Badge variant="default" className="w-fit bg-accent text-accent-foreground mb-2">Featured Event</Badge>
-                      <CardTitle className="font-headline text-3xl">30th Anniversary Celebration</CardTitle>
-                      <CardDescription className="text-lg">An exclusive evening celebrating the legacy of Djessou Manding.</CardDescription>
+                      <Badge variant="default" className="w-fit bg-accent text-accent-foreground mb-2">Événement en vedette</Badge>
+                      <CardTitle className="font-headline text-3xl">Célébration du 30ème anniversaire</CardTitle>
+                      <CardDescription className="text-lg">Une soirée exclusive pour célébrer l'héritage de Djessou Manding.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4 flex-grow">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-5 h-5 text-muted-foreground" />
-                        <span className="font-medium">November 8, 2025</span>
+                        <span className="font-medium">8 novembre 2025</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <MapPin className="w-5 h-5 text-muted-foreground" />
@@ -83,7 +83,7 @@ export default function Home() {
                     <CardFooter>
                        <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                         <Link href="/events/30th-anniversary-paris">
-                          Get Tickets <ArrowRight className="ml-2 h-4 w-4" />
+                          Acheter des billets <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
                       </Button>
                     </CardFooter>

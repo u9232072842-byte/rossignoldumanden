@@ -8,19 +8,19 @@ export default function ShopPage() {
   const products = [
     {
       id: 1,
-      name: "Anniversary Tour T-Shirt",
+      name: "T-Shirt de la Tournée Anniversaire",
       price: 35.00,
       image: PlaceHolderImages.find(p => p.id === 'merch-tshirt'),
     },
     {
       id: 2,
-      name: "'Golden Voice' Vinyl LP",
+      name: "Vinyle LP 'Golden Voice'",
       price: 45.00,
       image: PlaceHolderImages.find(p => p.id === 'merch-vinyl'),
     },
     {
       id: 3,
-      name: "Limited Edition Concert Poster",
+      name: "Affiche de Concert Édition Limitée",
       price: 25.00,
       image: PlaceHolderImages.find(p => p.id === 'merch-poster'),
     },
@@ -29,9 +29,9 @@ export default function ShopPage() {
   return (
     <div className="container py-12 md:py-24">
       <div className="flex flex-col items-center justify-center space-y-4 text-center mb-12">
-        <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-6xl">Official Merchandise</h1>
+        <h1 className="text-4xl font-headline font-bold tracking-tighter sm:text-6xl">Merchandise Officiel</h1>
         <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
-          Take a piece of the magic home with you. Exclusive items available for a limited time.
+          Emportez un morceau de la magie chez vous. Articles exclusifs disponibles pour une durée limitée.
         </p>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -57,7 +57,7 @@ export default function ShopPage() {
             <CardFooter className="p-6 pt-0">
               <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                 <ShoppingCart className="mr-2 h-4 w-4" />
-                Add to Cart
+                Ajouter au panier
               </Button>
             </CardFooter>
           </Card>

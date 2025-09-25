@@ -26,11 +26,11 @@ export default function EventDetailPage() {
         return (
           <>
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Ticket Price</span>
+              <span className="text-muted-foreground">Prix du billet</span>
               <span className="font-bold">${ticketPrice}.00</span>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Quantity</span>
+              <span className="text-muted-foreground">Quantité</span>
               <div className="flex items-center gap-2">
                 <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => handleTicketChange(-1)}>
                   <Minus className="h-4 w-4" />
@@ -47,21 +47,21 @@ export default function EventDetailPage() {
               <span className="font-bold">${ticketPrice * ticketCount}.00</span>
             </div>
             <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => setPurchaseStep('payment')}>
-              Proceed to Payment <CreditCard className="ml-2 h-4 w-4" />
+              Procéder au paiement <CreditCard className="ml-2 h-4 w-4" />
             </Button>
           </>
         );
       case 'payment':
         return (
             <>
-                <h3 className="font-headline text-xl mb-4 text-center">Simulated Payment</h3>
-                <p className="text-center text-muted-foreground mb-6">Select a payment method to complete your purchase.</p>
+                <h3 className="font-headline text-xl mb-4 text-center">Paiement simulé</h3>
+                <p className="text-center text-muted-foreground mb-6">Sélectionnez un mode de paiement pour finaliser votre achat.</p>
                 <div className="space-y-4">
                     <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setPurchaseStep('confirmation')}>
-                        Pay with Stripe
+                        Payer avec Stripe
                     </Button>
                     <Button size="lg" className="w-full bg-orange-500 hover:bg-orange-600 text-white" onClick={() => setPurchaseStep('confirmation')}>
-                        Pay with Orange Money
+                        Payer avec Orange Money
                     </Button>
                 </div>
             </>
@@ -69,8 +69,8 @@ export default function EventDetailPage() {
       case 'confirmation':
         return (
           <div className="text-center">
-            <h3 className="font-headline text-2xl mb-2">Purchase Confirmed!</h3>
-            <p className="text-muted-foreground mb-4">Your ticket is ready. A PDF has been sent to your email.</p>
+            <h3 className="font-headline text-2xl mb-2">Achat confirmé !</h3>
+            <p className="text-muted-foreground mb-4">Votre billet est prêt. Un PDF a été envoyé à votre email.</p>
             <div className="flex justify-center">
               {qrImage && (
                 <Image
@@ -82,7 +82,7 @@ export default function EventDetailPage() {
                 />
               )}
             </div>
-            <p className="text-sm text-muted-foreground mt-4">Scan this QR code at the event entrance.</p>
+            <p className="text-sm text-muted-foreground mt-4">Scannez ce code QR à l'entrée de l'événement.</p>
           </div>
         );
     }
@@ -104,14 +104,14 @@ export default function EventDetailPage() {
             )}
           </div>
           <div className="mt-8">
-            <h1 className="font-headline text-4xl font-bold">30th Anniversary Celebration</h1>
+            <h1 className="font-headline text-4xl font-bold">Célébration du 30ème anniversaire</h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              A once-in-a-lifetime concert celebrating three decades of musical genius. Join Djessou Manding for an unforgettable night in the heart of Paris.
+              Un concert unique pour célébrer trois décennies de génie musical. Rejoignez Djessou Manding pour une nuit inoubliable au cœur de Paris.
             </p>
             <div className="mt-6 space-y-3">
               <div className="flex items-center gap-3">
                 <Calendar className="w-5 h-5 text-primary" />
-                <span className="font-medium">November 8, 2025</span>
+                <span className="font-medium">8 novembre 2025</span>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-primary" />
@@ -125,7 +125,7 @@ export default function EventDetailPage() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 font-headline text-2xl">
                 <Ticket className="w-6 h-6 text-primary" />
-                Buy Your Tickets
+                Achetez vos billets
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
