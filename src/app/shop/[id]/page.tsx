@@ -1,57 +1,79 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { notFound, useParams } from 'next/navigation';
 import { getProducts } from '@/lib/products';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { ShoppingCart } from 'lucide-react';
 import { useCart } from '@/context/cart-context';
 import type { Product } from '@/lib/types';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
+import { cn } from '@/lib/utils';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 
 export default function ProductDetailPage() {
   const params = useParams();
   const products = getProducts();
-  const product = products.find((p) => p.id === params.id);
+  const product = products.find((p) => p.id === String(params.id));
   const { addToCart } = useCart();
   
   const [selectedSize, setSelectedSize] = useState<string | undefined>(product?.variants?.size?.[0]);
   const [selectedColor, setSelectedColor] = useState<string | undefined>(product?.variants?.color?.[0]);
+
+  const plugin = useRef(Autoplay({ delay: 3000, stopOnInteraction: true }));
 
   if (!product) {
     notFound();
   }
 
   const handleAddToCart = () => {
-    const itemToAdd: Product & { size?: string, color?: string } = { ...product };
-    if (selectedSize) itemToAdd.size = selectedSize;
-    if (selectedColor) itemToAdd.color = selectedColor;
-    addToCart(itemToAdd);
+    const itemToAdd = { ...product };
+    if (selectedSize) itemToAdd.variants = { ...itemToAdd.variants, size: [selectedSize] };
+    if (selectedColor) itemToAdd.variants = { ...itemToAdd.variants, color: [selectedColor] };
+    
+    addToCart({
+      ...product,
+      size: selectedSize,
+      color: selectedColor
+    });
   }
 
   return (
     <div className="container py-12 md:py-24">
       <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
         <div className="flex items-center justify-center">
-            <Card className="overflow-hidden shadow-lg">
-                <div className="relative aspect-square w-full max-w-lg">
-                {product.image && (
-                    <Image
-                    src={product.image.imageUrl}
-                    alt={product.image.description}
-                    fill
-                    className="object-cover"
-                    data-ai-hint={product.image.imageHint}
-                    />
-                )}
-                </div>
-            </Card>
+            <Carousel
+              plugins={[plugin.current]}
+              className="w-full max-w-md"
+              onMouseEnter={plugin.current.stop}
+              onMouseLeave={plugin.current.reset}
+            >
+              <CarouselContent>
+                {product.images.map((image) => (
+                  <CarouselItem key={image.id}>
+                    <Card className="overflow-hidden shadow-lg">
+                      <div className="relative aspect-square w-full">
+                        <Image
+                          src={image.imageUrl}
+                          alt={image.description}
+                          fill
+                          className="object-cover"
+                          data-ai-hint={image.imageHint}
+                        />
+                      </div>
+                    </Card>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="absolute left-2 top-1/2 -translate-y-1/2" />
+              <CarouselNext className="absolute right-2 top-1/2 -translate-y-1/2" />
+            </Carousel>
         </div>
         <div className="flex flex-col justify-center space-y-6">
           <div>
@@ -66,30 +88,44 @@ export default function ProductDetailPage() {
             {product.variants?.size && (
               <div>
                 <Label className="text-lg font-medium">Taille</Label>
-                <Select value={selectedSize} onValueChange={setSelectedSize}>
-                    <SelectTrigger className="w-full mt-2 h-12 text-base">
-                        <SelectValue placeholder="Sélectionnez une taille" />
-                    </SelectTrigger>
-                    <SelectContent>
-                        {product.variants.size.map(size => (
-                            <SelectItem key={size} value={size}>{size}</SelectItem>
-                        ))}
-                    </SelectContent>
-                </Select>
+                <RadioGroup
+                  value={selectedSize}
+                  onValueChange={setSelectedSize}
+                  className="flex gap-2 mt-2"
+                >
+                  {product.variants.size.map(size => (
+                    <RadioGroupItem key={size} value={size} id={`size-${size}`} className="sr-only" />
+                  ))}
+                  {product.variants.size.map(size => (
+                    <Label
+                      key={size}
+                      htmlFor={`size-${size}`}
+                      className={cn(
+                        "flex items-center justify-center rounded-md border-2 p-3 h-12 w-12 cursor-pointer",
+                        "hover:border-primary",
+                        selectedSize === size ? "border-primary bg-primary/10" : "border-border"
+                      )}
+                    >
+                      {size}
+                    </Label>
+                  ))}
+                </RadioGroup>
               </div>
             )}
             
             {product.variants?.color && (
                 <div>
                     <Label className="text-lg font-medium">Couleur</Label>
-                     <div className="flex gap-2 mt-2">
+                     <div className="flex gap-3 mt-2">
                         {product.variants.color.map(color => (
-                            <Button 
-                                key={color} 
-                                variant={selectedColor === color ? 'default' : 'outline'}
-                                size="icon"
+                            <button
+                                key={color}
                                 onClick={() => setSelectedColor(color)}
-                                className="h-10 w-10 rounded-full"
+                                className={cn(
+                                    "h-10 w-10 rounded-full border-2 transition-transform duration-200",
+                                    selectedColor === color ? 'ring-2 ring-offset-2 ring-primary scale-110' : 'ring-0',
+                                    'hover:scale-110'
+                                )}
                                 style={{backgroundColor: color, borderColor: color}}
                                 aria-label={`Select color ${color}`}
                             />

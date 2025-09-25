@@ -8,7 +8,7 @@ const products: Product[] = [
       name: "T-Shirt de la Tournée Anniversaire",
       price: 35.00,
       description: "T-shirt commémoratif en coton biologique avec le logo des 30 ans de carrière, une photo emblématique de l'artiste et les dates de la tournée. Un souvenir essentiel pour tout fan.",
-      image: PlaceHolderImages.find(p => p.id === 'merch-tshirt'),
+      images: PlaceHolderImages.filter(p => p.id.startsWith('merch-tshirt-')),
       category: 'vestimentaire',
       variants: {
         size: ['S', 'M', 'L', 'XL', 'XXL'],
@@ -20,7 +20,7 @@ const products: Product[] = [
       name: "Casquette Brodée Signature",
       price: 28.00,
       description: "Casquette de haute qualité avec le nom de l'artiste et un symbole mandingue brodés. Parfaite pour un style décontracté et pour afficher votre soutien.",
-      image: PlaceHolderImages.find(p => p.id === 'merch-cap'),
+      images: PlaceHolderImages.filter(p => p.id.startsWith('merch-cap-')),
       category: 'vestimentaire',
        variants: {
         color: ['#000000', '#1E40AF', '#BE123C'],
@@ -31,7 +31,7 @@ const products: Product[] = [
       name: "Sweat-shirt Signature 'Héritage'",
       price: 60.00,
       description: "Sweat-shirt à capuche confortable et stylé, portant une citation inspirante de Djessou Mama. Idéal pour les soirées fraîches et les moments de détente.",
-      image: PlaceHolderImages.find(p => p.id === 'merch-hoodie'),
+      images: PlaceHolderImages.filter(p => p.id.startsWith('merch-hoodie-')),
       category: 'vestimentaire',
       variants: {
         size: ['S', 'M', 'L', 'XL'],
@@ -43,7 +43,7 @@ const products: Product[] = [
       name: "Vinyle LP 'Golden Voice'",
       price: 45.00,
       description: "Édition limitée en vinyle de la compilation 'Golden Voice', regroupant les plus grands succès de l'artiste. Un objet de collection pour les audiophiles et les amateurs de musique.",
-      image: PlaceHolderImages.find(p => p.id === 'merch-vinyl'),
+      images: PlaceHolderImages.filter(p => p.id.startsWith('merch-vinyl-')),
       category: 'musique',
     },
      {
@@ -51,7 +51,7 @@ const products: Product[] = [
       name: "Livre biographique '30 Ans de Voix'",
       price: 55.00,
       description: "Un magnifique livre illustré retraçant les 30 ans de carrière de Djessou Mama, avec des photos inédites, des anecdotes et des témoignages exclusifs.",
-      image: PlaceHolderImages.find(p => p.id === 'merch-book'),
+      images: PlaceHolderImages.filter(p => p.id.startsWith('merch-book-')),
       category: 'musique',
     },
     {
@@ -59,7 +59,7 @@ const products: Product[] = [
       name: "Sac Tote Bag 'Rossignol du Manding'",
       price: 22.00,
       description: "Sac en toile résistant et pratique, avec un visuel artistique de l'artiste et la date anniversaire. Parfait pour vos courses, vos cours ou la plage.",
-      image: PlaceHolderImages.find(p => p.id === 'merch-tote'),
+      images: PlaceHolderImages.filter(p => p.id.startsWith('merch-tote-')),
       category: 'accessoires',
     },
     {
@@ -67,7 +67,7 @@ const products: Product[] = [
       name: "Affiche de Concert Édition Limitée",
       price: 25.00,
       description: "Affiche officielle du concert du 30ème anniversaire. Une œuvre d'art à encadrer pour immortaliser cet événement historique. Imprimée sur papier de haute qualité.",
-      image: PlaceHolderImages.find(p => p.id === 'merch-poster'),
+      images: PlaceHolderImages.filter(p => p.id.startsWith('merch-poster-')),
       category: 'decoration',
     },
 ];

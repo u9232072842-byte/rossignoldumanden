@@ -31,57 +31,141 @@
       "imageHint": "manager portrait"
     },
     {
-      "id": "merch-tshirt",
-      "description": "A t-shirt with a custom design",
+      "id": "merch-tshirt-front",
+      "description": "A t-shirt with a custom design (front)",
       "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0c2hpcnQlMjBtb2NrdXB8ZW58MHx8fHwxNzU4NzkxNzg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "tshirt mockup"
     },
     {
-      "id": "merch-vinyl",
+      "id": "merch-tshirt-back",
+      "description": "A t-shirt with a custom design (back)",
+      "imageUrl": "https://images.unsplash.com/photo-1588850561407-ed27c28d58e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0c2hpcnQlMjBiYWNrfGVufDB8fHx8MTc1OTM4MjgzNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tshirt back"
+    },
+    {
+      "id": "merch-tshirt-profile",
+      "description": "A t-shirt with a custom design (profile)",
+      "imageUrl": "https://images.unsplash.com/photo-1618677831713-35a578dec78c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx0c2hpcnQlMjBvbiUyMG1vZGVsfGVufDB8fHx8MTc1OTM4MjgzNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tshirt model"
+    },
+    {
+      "id": "merch-vinyl-1",
       "description": "A vinyl record of an album",
       "imageUrl": "https://images.unsplash.com/photo-1542395118-9d95347995bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dmlueWwlMjByZWNvcmR8ZW58MHx8fHwxNzU4NzI1ODk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "vinyl record"
     },
     {
-      "id": "merch-poster",
+      "id": "merch-vinyl-2",
+      "description": "A vinyl record of an album, different angle",
+      "imageUrl": "https://images.unsplash.com/photo-1630132338423-9f5b6b15822a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyMHx8dmlueWwlMjByZWNvcmR8ZW58MHx8fHwxNzU4NzI1ODk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "record player"
+    },
+    {
+      "id": "merch-vinyl-3",
+      "description": "A vinyl record of an album, lifestyle shot",
+      "imageUrl": "https://images.unsplash.com/photo-1516214124299-07f79c277317?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyM3x8dmlueWwlMjByZWNvcmR8ZW58MHx8fHwxNzU4NzI1ODk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "music lifestyle"
+    },
+    {
+      "id": "merch-poster-1",
       "description": "A concert poster",
       "imageUrl": "https://images.unsplash.com/photo-1690131054353-52367f029340?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb25jZXJ0JTIwcG9zdGVyfGVufDB8fHx8MTc1ODc1MzE5NHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "concert poster"
     },
     {
-      "id": "merch-cap",
-      "description": "An embroidered cap",
+      "id": "merch-poster-2",
+      "description": "A concert poster on a wall",
+      "imageUrl": "https://images.unsplash.com/photo-1598122354326-735fed9254c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwb3N0ZXIlMjBtb2NrdXB8ZW58MHx8fHwxNzU5MzgzMzk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "poster mockup"
+    },
+    {
+      "id": "merch-poster-3",
+      "description": "A concert poster held by a fan",
+      "imageUrl": "https://images.unsplash.com/photo-1598122354326-735fed9254c7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxwb3N0ZXIlMjBtb2NrdXB8ZW58MHx8fHwxNzU5MzgzMzk2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "poster mockup"
+    },
+    {
+      "id": "merch-cap-front",
+      "description": "An embroidered cap (front)",
       "imageUrl": "https://images.unsplash.com/photo-1654673223509-bd5a71e52f21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXAlMjBtb2NrdXB8ZW58MHx8fHwxNzU4ODIwNzk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "cap mockup"
     },
     {
-      "id": "merch-hoodie",
-      "description": "A hoodie with a custom design",
+      "id": "merch-cap-profile",
+      "description": "An embroidered cap (profile)",
+      "imageUrl": "https://images.unsplash.com/photo-1588850561407-ed27c28d58e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0c2hpcnQlMjBiYWNrfGVufDB8fHx8MTc1OTM4MjgzNnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cap profile"
+    },
+    {
+      "id": "merch-cap-back",
+      "description": "An embroidered cap (back)",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0c2hpcnQlMjBtb2NrdXB8ZW58MHx8fHwxNzU4NzkxNzg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cap back"
+    },
+    {
+      "id": "merch-hoodie-front",
+      "description": "A hoodie with a custom design (front)",
       "imageUrl": "https://images.unsplash.com/photo-1554411529-ee36dfde51b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxob29kaWUlMjBtb2NrdXB8ZW58MHx8fHwxNzU4ODIwNzk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "hoodie mockup"
     },
     {
-      "id": "merch-book",
+      "id": "merch-hoodie-back",
+      "description": "A hoodie with a custom design (back)",
+      "imageUrl": "https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxob29kaWUlMjBiYWNrfGVufDB8fHx8MTc1OTM4MzYyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hoodie back"
+    },
+    {
+      "id": "merch-hoodie-lifestyle",
+      "description": "A hoodie with a custom design (lifestyle)",
+      "imageUrl": "https://images.unsplash.com/photo-1556434404-8af3300388a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMXx8aG9vZGllJTIwbGlmZXN0eWxlfGVufDB8fHx8MTc1OTM4MzYyMXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hoodie lifestyle"
+    },
+    {
+      "id": "merch-book-1",
       "description": "A biography book cover",
       "imageUrl": "https://images.unsplash.com/photo-1511108690759-009324a90311?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxib29rJTIwY292ZXJ8ZW58MHx8fHwxNzU4NzU3MDc5fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "book cover"
     },
     {
-      "id": "merch-tote",
+      "id": "merch-book-2",
+      "description": "A biography book open",
+      "imageUrl": "https://images.unsplash.com/photo-1491841550275-5b462bf9f595?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxvcGVuJTIwYm9va3xlbnwwfHx8fDE3NTkzODM3NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "open book"
+    },
+    {
+      "id": "merch-book-3",
+      "description": "A biography book on a table",
+      "imageUrl": "https://images.unsplash.com/photo-1507842217343-583bb7270b66?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxib29rcyUyMG9uJTIwdGFibGV8ZW58MHx8fHwxNzU5MzgzNzQyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "books table"
+    },
+    {
+      "id": "merch-tote-1",
       "description": "A tote bag with a custom design",
       "imageUrl": "https://images.unsplash.com/photo-1632942480766-9cee148c4ee8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx0b3RlJTIwYmFnfGVufDB8fHx8MTc1ODc4ODQyNHww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "tote bag"
     },
     {
+      "id": "merch-tote-2",
+      "description": "A tote bag being held",
+      "imageUrl": "https://images.unsplash.com/photo-1589578233488-831420942856?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHx0b3RlJTIwYmFnfGVufDB8fHx8MTc1ODc4ODQyNHww&ixlib-rb-4.1.0&q=80&w=1080",
+      "imageHint": "tote bag held"
+    },
+    {
+      "id": "merch-tote-3",
+      "description": "A tote bag with items",
+      "imageUrl": "https://images.unsplash.com/photo-1543322749-1d48d4f0d6d5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dG90ZSUyMGJhZ3xlbnwwfHx8fDE3NTg3ODg0MjR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tote bag items"
+    },
+    {
       "id": "qr-code",
       "description": "A placeholder QR code for a ticket",
-      "imageUrl": "https://images.unsplash.com/photo-1626682561113-d1db402cc866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxciUyMGNvZGV8ZW58MHx8fHwxNzU4NzcxMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1626682561113-d1db402cc866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxciUyMGNvZGV8ZW58MHx8fHwxNzU4NzcxMDY3fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "qr code"
     },
     {
       "id": "album-nna",
       "description": "Album cover for N'na",
-      "imageUrl": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhbGJ1bSUyMGNvdmVyfGVufDB8fHx8MTc1ODk3OTgwMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhbGJ1bSUyMGNvdmVyfGVufDB8fHx8MTc1ODk3OTgwMnww&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "album cover"
     },
     {
@@ -93,7 +177,7 @@
     {
       "id": "album-foly",
       "description": "Album cover for Foly",
-      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzU4OTgwMDM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzU4OTgwMDM3fDA&ixlib-rb-4.1.0&q=80&w=1080",
       "imageHint": "portrait music"
     },
     {

@@ -75,10 +75,10 @@ export default function CheckoutPage() {
                             <div key={cartItemId} className="flex items-center justify-between gap-4">
                                 <div className="flex items-center gap-4">
                                     <div className="relative h-16 w-16 rounded-md overflow-hidden">
-                                        {item.product.image && (
+                                        {item.product.images && item.product.images.length > 0 && (
                                             <Image
-                                                src={item.product.image.imageUrl}
-                                                alt={item.product.image.description}
+                                                src={item.product.images[0].imageUrl}
+                                                alt={item.product.images[0].description}
                                                 fill
                                                 className="object-cover"
                                             />

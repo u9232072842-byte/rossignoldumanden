@@ -5,7 +5,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import type { Product } from '@/lib/types';
@@ -33,13 +32,13 @@ export default function ShopPage() {
           <Card key={product.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
             <CardHeader className="p-0">
               <div className="aspect-square relative">
-                {product.image && (
+                {product.images && product.images.length > 0 && (
                   <Image
-                    src={product.image.imageUrl}
-                    alt={product.image.description}
+                    src={product.images[0].imageUrl}
+                    alt={product.images[0].description}
                     fill
                     className="object-cover"
-                    data-ai-hint={product.image.imageHint}
+                    data-ai-hint={product.images[0].imageHint}
                   />
                 )}
               </div>

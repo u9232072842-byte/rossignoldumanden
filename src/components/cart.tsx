@@ -53,10 +53,10 @@ export function Cart() {
                   return (
                     <div key={cartItemId} className="flex items-start gap-4 py-4">
                       <div className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-md">
-                        {item.product.image && (
+                        {item.product.images && item.product.images.length > 0 && (
                            <Image
-                            src={item.product.image.imageUrl}
-                            alt={item.product.image.description}
+                            src={item.product.images[0].imageUrl}
+                            alt={item.product.images[0].description}
                             fill
                             className="object-cover"
                           />

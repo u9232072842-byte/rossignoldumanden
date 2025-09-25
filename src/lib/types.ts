@@ -1,5 +1,5 @@
 
-import type { PlaceHolderImages } from '@/lib/placeholder-images';
+import type { ImagePlaceholder } from '@/lib/placeholder-images';
 
 export type ProductVariant = {
   size?: string[];
@@ -11,7 +11,7 @@ export type Product = {
   name: string;
   price: number;
   description: string;
-  image: (typeof PlaceHolderImages)[0] | undefined;
+  images: ImagePlaceholder[];
   category: string;
   variants?: ProductVariant;
 };
