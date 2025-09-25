@@ -1,6 +1,8 @@
+
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { ShoppingCart, User } from 'lucide-react';
+import { User } from 'lucide-react';
+import { Cart } from '@/components/cart';
 
 export default function Header() {
   return (
@@ -34,10 +36,7 @@ export default function Header() {
           </nav>
         </div>
         <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon">
-            <ShoppingCart className="h-5 w-5" />
-            <span className="sr-only">Panier</span>
-          </Button>
+          <Cart />
           <Button variant="ghost" size="icon">
             <User className="h-5 w-5" />
             <span className="sr-only">Profil</span>

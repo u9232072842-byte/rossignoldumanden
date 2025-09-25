@@ -7,16 +7,12 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/componen
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ShoppingCart } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
-type Product = {
-  id: string;
-  name: string;
-  price: number;
-  image: (typeof PlaceHolderImages)[0] | undefined;
-  category: string;
-};
+import { useCart } from '@/context/cart-context';
+import type { Product } from '@/lib/types';
 
 export default function ShopPage() {
+  const { addToCart } = useCart();
+  
   const products: Product[] = [
     {
       id: 'tshirt',
@@ -104,7 +100,7 @@ export default function ShopPage() {
               <p className="text-lg font-semibold text-primary mt-2">{product.price.toFixed(2)} €</p>
             </CardContent>
             <CardFooter className="p-6 pt-0">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => addToCart(product)}>
                 <ShoppingCart className="mr-2 h-4 w-4" />
                 Ajouter au panier
               </Button>
