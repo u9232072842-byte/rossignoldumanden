@@ -1,43 +1,69 @@
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { ShoppingCart, User } from 'lucide-react';
+'use server';
+/**
+ * @fileOverview Un agent IA pour générer des suggestions de setlists pour Djessou Mama Diabate.
+ *
+ * - generateSetlistSuggestions - Une fonction qui gère le processus de génération de setlist.
+ * - GenerateSetlistSuggestionsInput - Le type d'entrée pour la fonction generateSetlistSuggestions.
+ * - GenerateSetlistSuggestionsOutput - Le type de retour pour la fonction generateSetlistSuggestions.
+ */
 
-export default function Header() {
-  return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
-        <div className="mr-auto flex items-center">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-headline text-2xl font-bold tracking-tighter">
-              Djessou Mama Diabate
-            </span>
-          </Link>
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-            <Link
-              href="/#events"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Événements
-            </Link>
-            <Link
-              href="/shop"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Boutique
-            </Link>
-          </nav>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon">
-            <ShoppingCart className="h-5 w-5" />
-            <span className="sr-only">Panier</span>
-          </Button>
-          <Button variant="ghost" size="icon">
-            <User className="h-5 w-5" />
-            <span className="sr-only">Profil</span>
-          </Button>
-        </div>
-      </div>
-    </header>
-  );
+import { ai } from '@/ai/genkit';
+import { z } from 'zod';
+
+const GenerateSetlistSuggestionsInputSchema = z.object({
+  eventType: z.string().describe("Le type d'événement (ex: Festival, Concert Intime, Cérémonie)."),
+  durationInMinutes: z.number().describe("La durée souhaitée du concert en minutes."),
+  audienceMood: z.string().describe("L'ambiance souhaitée pour le public (ex: Festif, Émotionnel, Spirituel)."),
+});
+export type GenerateSetlistSuggestionsInput = z.infer<typeof GenerateSetlistSuggestionsInputSchema>;
+
+const SongSchema = z.object({
+  title: z.string().describe("Le titre de la chanson."),
+  reason: z.string().describe("La raison pour laquelle cette chanson a été choisie pour la setlist."),
+});
+
+const GenerateSetlistSuggestionsOutputSchema = z.object({
+  setlist: z.array(SongSchema).describe("La liste des chansons suggérées."),
+  introduction: z.string().describe("Un court texte d'introduction pour la setlist."),
+  encore: z.array(SongSchema).describe("Les chansons suggérées pour le rappel."),
+});
+export type GenerateSetlistSuggestionsOutput = z.infer<typeof GenerateSetlistSuggestionsOutputSchema>;
+
+export async function generateSetlistSuggestions(input: GenerateSetlistSuggestionsInput): Promise<GenerateSetlistSuggestionsOutput> {
+  return generateSetlistFlow(input);
 }
+
+const prompt = ai.definePrompt({
+  name: 'generateSetlistPrompt',
+  input: { schema: GenerateSetlistSuggestionsInputSchema },
+  output: { schema: GenerateSetlistSuggestionsOutputSchema },
+  prompt: `
+    Vous êtes un directeur musical expert pour l'artiste malienne de renommée mondiale, Djessou Mama Diabate, "Le Rossignol du Manding".
+    Votre tâche est de créer une setlist parfaite pour un concert à venir en fonction des critères suivants :
+
+    Type d'événement : {{{eventType}}}
+    Durée du concert : {{{durationInMinutes}}} minutes
+    Ambiance souhaitée : {{{audienceMood}}}
+
+    Djessou Mama Diabate est connue pour sa voix puissante, son mélange de tradition mandingue et de sons modernes. Ses chansons célèbres incluent des titres comme "Denko", "Fakoly", "M'baudy", "Bani", et "Wassolon". Vous pouvez utiliser ces chansons et d'autres de son répertoire supposé.
+
+    Veuillez générer une setlist qui correspond aux critères. Pour chaque chanson, fournissez une brève raison de son inclusion.
+    Incluez également un court texte d'introduction et des suggestions pour un rappel (encore).
+    Structurez votre réponse exactement selon le schéma de sortie JSON fourni.
+  `,
+});
+
+const generateSetlistFlow = ai.defineFlow(
+  {
+    name: 'generateSetlistFlow',
+    inputSchema: GenerateSetlistSuggestionsInputSchema,
+    outputSchema: GenerateSetlistSuggestionsOutputSchema,
+  },
+  async (input) => {
+    const { output } = await prompt(input);
+    if (!output) {
+      throw new Error("La génération de la setlist a échoué.");
+    }
+    return output;
+  }
+);

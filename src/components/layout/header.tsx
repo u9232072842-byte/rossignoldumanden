@@ -25,6 +25,12 @@ export default function Header() {
             >
               Boutique
             </Link>
+            <Link
+              href="/setlist-generator"
+              className="transition-colors hover:text-foreground/80 text-foreground/60"
+            >
+              Générateur de Setlist IA
+            </Link>
           </nav>
         </div>
         <div className="flex items-center space-x-2">
