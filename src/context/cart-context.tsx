@@ -1,20 +1,15 @@
 
 'use client';
 
-import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
-import type { Product } from '@/lib/types';
+import React, { createContext, useContext, useState, useMemo } from 'react';
+import type { Product, CartItem } from '@/lib/types';
 import { useToast } from "@/hooks/use-toast"
-
-type CartItem = {
-  product: Product;
-  quantity: number;
-};
 
 type CartContextType = {
   cartItems: CartItem[];
-  addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
+  addToCart: (item: Product & { size?: string, color?: string }) => void;
+  removeFromCart: (itemId: string) => void;
+  updateQuantity: (itemId: string, quantity: number) => void;
   clearCart: () => void;
   cartCount: number;
   totalPrice: number;
@@ -29,37 +24,53 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [isCartOpen, setCartOpen] = useState(false);
   const { toast } = useToast();
 
-  const addToCart = (product: Product) => {
+  const addToCart = (item: Product & { size?: string, color?: string }) => {
     setCartItems(prevItems => {
-      const existingItem = prevItems.find(item => item.product.id === product.id);
+      // Create a unique ID for the cart item based on product ID and variants
+      const cartItemId = `${item.id}-${item.size || ''}-${item.color || ''}`;
+      
+      const existingItem = prevItems.find(i => `${i.product.id}-${i.size || ''}-${i.color || ''}` === cartItemId);
+
       if (existingItem) {
-        return prevItems.map(item =>
-          item.product.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
+        return prevItems.map(i =>
+          `${i.product.id}-${i.size || ''}-${i.color || ''}` === cartItemId
+            ? { ...i, quantity: i.quantity + 1 }
+            : i
         );
       }
-      return [...prevItems, { product, quantity: 1 }];
+      
+      const newCartItem: CartItem = {
+          product: item,
+          quantity: 1,
+          size: item.size,
+          color: item.color
+      };
+      
+      return [...prevItems, newCartItem];
     });
     setCartOpen(true);
     toast({
       title: "Ajouté au panier",
-      description: `${product.name} a été ajouté à votre panier.`,
+      description: `${item.name} a été ajouté à votre panier.`,
     })
   };
 
-  const removeFromCart = (productId: string) => {
-    setCartItems(prevItems => prevItems.filter(item => item.product.id !== productId));
+  const removeFromCart = (itemId: string) => {
+    setCartItems(prevItems => prevItems.filter(item => {
+        const cartItemId = `${item.product.id}-${item.size || ''}-${item.color || ''}`;
+        return cartItemId !== itemId;
+    }));
   };
 
-  const updateQuantity = (productId: string, quantity: number) => {
+  const updateQuantity = (itemId: string, quantity: number) => {
+    const cartItemId = itemId;
     if (quantity <= 0) {
-      removeFromCart(productId);
+      removeFromCart(cartItemId);
       return;
     }
     setCartItems(prevItems =>
       prevItems.map(item =>
-        item.product.id === productId ? { ...item, quantity } : item
+        `${item.product.id}-${item.size || ''}-${item.color || ''}` === cartItemId ? { ...item, quantity } : item
       )
     );
   };

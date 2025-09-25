@@ -9,7 +9,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, CreditCard } from 'lucide-react';
+import { CheckCircle } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import Link from 'next/link';
 
 export default function CheckoutPage() {
   const { cartItems, totalPrice, clearCart } = useCart();
@@ -38,7 +40,7 @@ export default function CheckoutPage() {
                 Votre commande a été passée avec succès. Un e-mail de confirmation a été envoyé à {customerInfo.email}.
             </p>
             <Button asChild>
-                <a href="/">Retour à l'accueil</a>
+                <Link href="/">Retour à l'accueil</Link>
             </Button>
         </Card>
       </div>
@@ -53,7 +55,7 @@ export default function CheckoutPage() {
                 Ajoutez des articles à votre panier pour pouvoir passer une commande.
             </p>
             <Button asChild>
-                <a href="/shop">Visiter la boutique</a>
+                <Link href="/shop">Visiter la boutique</Link>
             </Button>
         </div>
     )
@@ -67,27 +69,34 @@ export default function CheckoutPage() {
             <h1 className="text-3xl font-headline font-bold">Résumé de la commande</h1>
             <Card>
                 <CardContent className="p-6 space-y-4">
-                    {cartItems.map(item => (
-                    <div key={item.product.id} className="flex items-center justify-between gap-4">
-                        <div className="flex items-center gap-4">
-                            <div className="relative h-16 w-16 rounded-md overflow-hidden">
-                                {item.product.image && (
-                                    <Image
-                                        src={item.product.image.imageUrl}
-                                        alt={item.product.image.description}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                )}
+                    {cartItems.map(item => {
+                         const cartItemId = `${item.product.id}-${item.size || ''}-${item.color || ''}`;
+                         return (
+                            <div key={cartItemId} className="flex items-center justify-between gap-4">
+                                <div className="flex items-center gap-4">
+                                    <div className="relative h-16 w-16 rounded-md overflow-hidden">
+                                        {item.product.image && (
+                                            <Image
+                                                src={item.product.image.imageUrl}
+                                                alt={item.product.image.description}
+                                                fill
+                                                className="object-cover"
+                                            />
+                                        )}
+                                    </div>
+                                    <div>
+                                        <p className="font-semibold">{item.product.name}</p>
+                                        <div className="text-sm text-muted-foreground mt-1 space-x-1">
+                                            {item.size && <Badge variant="secondary">Taille: {item.size}</Badge>}
+                                            {item.color && <Badge variant="secondary" style={{ backgroundColor: item.color, color: '#fff' }}>Couleur</Badge>}
+                                        </div>
+                                         <p className="text-sm text-muted-foreground">Quantité: {item.quantity}</p>
+                                    </div>
+                                </div>
+                                <p className="font-semibold">{(item.product.price * item.quantity).toFixed(2)} €</p>
                             </div>
-                            <div>
-                                <p className="font-semibold">{item.product.name}</p>
-                                <p className="text-sm text-muted-foreground">Quantité: {item.quantity}</p>
-                            </div>
-                        </div>
-                        <p className="font-semibold">{(item.product.price * item.quantity).toFixed(2)} €</p>
-                    </div>
-                    ))}
+                         );
+                    })}
                     <Separator />
                     <div className="flex justify-between font-bold text-lg">
                         <span>Total</span>

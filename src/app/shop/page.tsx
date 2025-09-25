@@ -2,68 +2,17 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ShoppingCart } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { useCart } from '@/context/cart-context';
 import type { Product } from '@/lib/types';
+import { getProducts } from '@/lib/products';
 
 export default function ShopPage() {
-  const { addToCart } = useCart();
-  
-  const products: Product[] = [
-    {
-      id: 'tshirt',
-      name: "T-Shirt de la Tournée Anniversaire",
-      price: 35.00,
-      image: PlaceHolderImages.find(p => p.id === 'merch-tshirt'),
-      category: 'vestimentaire',
-    },
-    {
-      id: 'cap',
-      name: "Casquette Brodée",
-      price: 28.00,
-      image: PlaceHolderImages.find(p => p.id === 'merch-cap'),
-      category: 'vestimentaire',
-    },
-     {
-      id: 'hoodie',
-      name: "Sweat-shirt Signature",
-      price: 60.00,
-      image: PlaceHolderImages.find(p => p.id === 'merch-hoodie'),
-      category: 'vestimentaire',
-    },
-    {
-      id: 'vinyl',
-      name: "Vinyle LP 'Golden Voice'",
-      price: 45.00,
-      image: PlaceHolderImages.find(p => p.id === 'merch-vinyl'),
-      category: 'musique',
-    },
-     {
-      id: 'book',
-      name: "Livre biographique 30 ans",
-      price: 55.00,
-      image: PlaceHolderImages.find(p => p.id === 'merch-book'),
-      category: 'musique',
-    },
-    {
-      id: 'tote',
-      name: "Sac Tote Bag Visuel Artiste",
-      price: 22.00,
-      image: PlaceHolderImages.find(p => p.id === 'merch-tote'),
-      category: 'accessoires',
-    },
-    {
-      id: 'poster',
-      name: "Affiche de Concert Édition Limitée",
-      price: 25.00,
-      image: PlaceHolderImages.find(p => p.id === 'merch-poster'),
-      category: 'decoration',
-    },
-  ];
+  const products: Product[] = getProducts();
 
   const categories = [
     { value: 'all', label: 'Tous' },
@@ -100,9 +49,10 @@ export default function ShopPage() {
               <p className="text-lg font-semibold text-primary mt-2">{product.price.toFixed(2)} €</p>
             </CardContent>
             <CardFooter className="p-6 pt-0">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => addToCart(product)}>
-                <ShoppingCart className="mr-2 h-4 w-4" />
-                Ajouter au panier
+              <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                <Link href={`/shop/${product.id}`}>
+                  Voir le produit <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
               </Button>
             </CardFooter>
           </Card>
