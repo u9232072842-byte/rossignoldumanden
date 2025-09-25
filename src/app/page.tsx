@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowRight, Calendar, MapPin, Music } from 'lucide-react';
+import { ArrowRight, Calendar, MapPin, Music, Video } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
@@ -20,6 +20,13 @@ export default function Home() {
   const plugin = React.useRef(
     Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
   )
+
+  const videos = [
+    { id: 'z3wAjJXbYzA', title: 'Performance Live Acoustique' },
+    { id: 'dQw4w9WgXcQ', title: 'Clip Officiel - Nouveau Single' },
+    { id: '3JZ_D3ELwOQ', title: 'En coulisses de la tournée' },
+    { id: 'kJQP7kiw5Fk', title: 'Interview exclusive' },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -153,6 +160,39 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <section id="media" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
+          <div className="container px-4 md:px-6">
+            <div className="flex flex-col items-center justify-center space-y-4 text-center">
+              <div className="space-y-2">
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">Vidéos & Clips</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                  Découvrez les derniers clips et performances live.
+                </p>
+              </div>
+            </div>
+            <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-1 md:grid-cols-2 lg:gap-12 mt-12">
+              {videos.map((video) => (
+                <Card key={video.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <div className="aspect-video relative">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${video.id}`}
+                      title={video.title}
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      className="absolute top-0 left-0 w-full h-full"
+                    ></iframe>
+                  </div>
+                  <CardHeader>
+                    <CardTitle className="font-headline text-xl">{video.title}</CardTitle>
+                  </CardHeader>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
       </main>
     </div>
   );
