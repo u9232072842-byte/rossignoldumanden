@@ -26,7 +26,7 @@ export default function Home() {
     { id: 'dyClhH06wBU', title: 'Djessou Mama Diabate - N\'na' },
     { id: 'wCJLo1FpogQ', title: 'Concert Dédicace Album Foly' },
     { id: 'HsrSBg3VxzM', title: 'CONCERT ZENITH' },
-    { id: 'z3wAjJXbYzA', title: 'Performance Live Acoustique' },
+    { id: 'wCJLo1FpogQ', title: 'Performance Live Acoustique' },
     { id: '3JZ_D3ELwOQ', title: 'En coulisses de la tournée' },
     { id: 'kJQP7kiw5Fk', title: 'Interview exclusive' },
   ];
