@@ -7,6 +7,7 @@ import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { CartProvider } from '@/context/cart-context';
 import WhatsAppWidget from '@/components/whatsapp-widget';
+import AssistantWidget from '@/components/assistant-widget';
 
 export const metadata: Metadata = {
   title: 'Djessou Mama Diabate | Le Rossignol du Manding',
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Footer />
           <Toaster />
           <WhatsAppWidget />
+          <AssistantWidget />
         </CartProvider>
       </body>
     </html>
