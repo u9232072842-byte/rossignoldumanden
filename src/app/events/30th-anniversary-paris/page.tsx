@@ -1,23 +1,41 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Calendar, MapPin, Ticket, CreditCard, Minus, Plus } from 'lucide-react';
+import { Calendar, MapPin, Ticket, CreditCard, Minus, Plus, Download } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
+import TicketComponent from '@/components/ticket';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 export default function EventDetailPage() {
   const eventImage = PlaceHolderImages.find((p) => p.id === 'event-paris');
-  const qrImage = PlaceHolderImages.find((p) => p.id === 'qr-code');
   const [ticketCount, setTicketCount] = useState(1);
   const [purchaseStep, setPurchaseStep] = useState('details'); // details, payment, confirmation
+  const ticketRef = useRef(null);
 
   const ticketPrice = 75;
 
   const handleTicketChange = (amount: number) => {
     setTicketCount((prev) => Math.max(1, prev + amount));
+  };
+
+  const handleDownloadPdf = async () => {
+    const element = ticketRef.current;
+    if (!element) return;
+
+    const canvas = await html2canvas(element, { scale: 2 });
+    const data = canvas.toDataURL('image/png');
+
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    
+    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('billet-djessou-mama-diabate.pdf');
   };
 
   const renderStep = () => {
@@ -67,22 +85,24 @@ export default function EventDetailPage() {
             </>
         );
       case 'confirmation':
+        const ticketId = `DMD-30ANS-${Date.now()}`;
         return (
           <div className="text-center">
             <h3 className="font-headline text-2xl mb-2">Achat confirmé !</h3>
-            <p className="text-muted-foreground mb-4">Votre billet est prêt. Un PDF a été envoyé à votre email.</p>
-            <div className="flex justify-center">
-              {qrImage && (
-                <Image
-                  src={qrImage.imageUrl}
-                  alt={qrImage.description}
-                  width={200}
-                  height={200}
-                  data-ai-hint={qrImage.imageHint}
-                />
-              )}
+            <p className="text-muted-foreground mb-4">Votre billet est prêt. Téléchargez-le ci-dessous.</p>
+            <div className="bg-white p-4 rounded-lg shadow-inner">
+              <TicketComponent
+                ref={ticketRef}
+                ticketId={ticketId}
+                eventName="Célébration du 30ème anniversaire"
+                eventDate="8 novembre 2025"
+                eventLocation="Grand Rex, Paris, France"
+                quantity={ticketCount}
+              />
             </div>
-            <p className="text-sm text-muted-foreground mt-4">Scannez ce code QR à l'entrée de l'événement.</p>
+            <Button size="lg" className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground" onClick={handleDownloadPdf}>
+              Télécharger le billet PDF <Download className="ml-2 h-4 w-4" />
+            </Button>
           </div>
         );
     }
