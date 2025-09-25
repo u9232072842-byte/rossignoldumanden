@@ -23,8 +23,8 @@ export default function Home() {
   )
 
   const videos = [
+    { id: 'dyClhH06wBU', title: 'Djessou Mama Diabate - N\'na' },
     { id: 'z3wAjJXbYzA', title: 'Performance Live Acoustique' },
-    { id: 'dQw4w9WgXcQ', title: 'Clip Officiel - Nouveau Single' },
     { id: '3JZ_D3ELwOQ', title: 'En coulisses de la tournée' },
     { id: 'kJQP7kiw5Fk', title: 'Interview exclusive' },
   ];
@@ -57,7 +57,7 @@ export default function Home() {
           </Carousel>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-            <h1 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
+            <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-foreground">
               Djessou Mama Diabate - Le Rossignol du Manding
             </h1>
             <p className="mt-4 max-w-2xl text-lg md:text-xl text-foreground/80">
@@ -76,7 +76,7 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <Card className="shadow-xl text-center lg:text-left">
                   <CardHeader>
-                    <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                    <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">
                       La Voix d'une Génération
                     </CardTitle>
                   </CardHeader>
@@ -110,7 +110,7 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">Événements à venir</h2>
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Événements à venir</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Rejoignez-nous pour des nuits inoubliables de musique et de célébration.
                 </p>
@@ -132,7 +132,7 @@ export default function Home() {
                   <div className="md:w-1/2 flex flex-col">
                     <CardHeader>
                       <Badge variant="default" className="w-fit bg-accent text-accent-foreground mb-2">Événement en vedette</Badge>
-                      <CardTitle className="font-headline text-3xl">Célébration du 30ème anniversaire</CardTitle>
+                      <CardTitle className="font-headline text-2xl">Célébration du 30ème anniversaire</CardTitle>
                       <CardDescription className="text-lg">Une soirée exclusive pour célébrer l'héritage de Djessou Mama Diabate.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4 flex-grow">
@@ -177,7 +177,7 @@ export default function Home() {
               </div>
               <Card className="shadow-xl text-center lg:text-left">
                   <CardHeader>
-                    <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                    <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">
                       Management
                     </CardTitle>
                     <CardDescription className="text-xl">Diabaté Bangaly Fodé</CardDescription>
@@ -199,7 +199,7 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-5xl">Vidéos & Clips</h2>
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Vidéos &amp; Clips</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
                   Découvrez les derniers clips et performances live.
                 </p>
