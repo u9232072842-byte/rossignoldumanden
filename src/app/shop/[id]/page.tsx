@@ -32,11 +32,7 @@ export default function ProductDetailPage() {
     notFound();
   }
 
-  const handleAddToCart = () => {
-    const itemToAdd = { ...product };
-    if (selectedSize) itemToAdd.variants = { ...itemToAdd.variants, size: [selectedSize] };
-    if (selectedColor) itemToAdd.variants = { ...itemToAdd.variants, color: [selectedColor] };
-    
+  const handleAddToCart = () => {    
     addToCart({
       ...product,
       size: selectedSize,
