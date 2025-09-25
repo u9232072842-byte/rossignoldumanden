@@ -23,12 +23,13 @@ export default function Home() {
   )
 
   const videos = [
-    { id: 'dyClhH06wBU', title: 'Djessou Mama Diabate - N\'na' },
+    { id: 'dyClhH06wBU', title: "N'na (Clip Officiel)" },
+    { id: '3JZ_D3ELwOQ', title: 'En coulisses de la tournée' },
     { id: 'HsrSBg3VxzM', title: 'CONCERT ZENITH' },
     { id: 'wCJLo1FpogQ', title: 'Performance Live Acoustique' },
-    { id: '3JZ_D3ELwOQ', title: 'En coulisses de la tournée' },
     { id: 'kJQP7kiw5Fk', title: 'Interview exclusive' },
     { id: '1HZKW4-s9GU', title: "L'ENFANT BENI (Clip Officiel)" },
+    { id: 'KSUKFT5btCw', title: 'A Fidé (Clip Officiel)' },
   ];
 
   return (
