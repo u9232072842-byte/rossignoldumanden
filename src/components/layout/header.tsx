@@ -23,6 +23,12 @@ export default function Header() {
             >
               Événements
             </Link>
+             <Link
+              href="/gallery"
+              className="transition-colors hover:text-foreground/80 text-foreground/60"
+            >
+              Galerie
+            </Link>
             <Link
               href="/albums"
               className="transition-colors hover:text-foreground/80 text-foreground/60"

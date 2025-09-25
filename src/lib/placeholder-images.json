@@ -191,6 +191,60 @@
       "description": "Album cover for Héritage",
       "imageUrl": "/images/album-heritage.png",
       "imageHint": "music art"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Djessou Mama Diabate performing on stage with a microphone.",
+      "imageUrl": "/images/gallery-1.png",
+      "imageHint": "singer stage"
+    },
+    {
+      "id": "gallery-2",
+      "description": "A black and white photo of Djessou Mama Diabate.",
+      "imageUrl": "/images/gallery-2.png",
+      "imageHint": "singer portrait"
+    },
+    {
+      "id": "gallery-3",
+      "description": "Djessou Mama Diabate in a traditional outfit.",
+      "imageUrl": "/images/gallery-3.png",
+      "imageHint": "traditional musician"
+    },
+    {
+      "id": "gallery-4",
+      "description": "Close-up shot of Djessou Mama Diabate singing.",
+      "imageUrl": "/images/gallery-4.png",
+      "imageHint": "singer closeup"
+    },
+    {
+      "id": "gallery-5",
+      "description": "Djessou Mama Diabate with her band in the background.",
+      "imageUrl": "/images/gallery-5.png",
+      "imageHint": "musician band"
+    },
+    {
+      "id": "gallery-6",
+      "description": "Djessou Mama Diabate smiling at an event.",
+      "imageUrl": "/images/gallery-6.png",
+      "imageHint": "musician smile"
+    },
+    {
+      "id": "gallery-7",
+      "description": "A vibrant shot from a music video.",
+      "imageUrl": "/images/gallery-7.png",
+      "imageHint": "music video"
+    },
+    {
+      "id": "gallery-8",
+      "description": "Djessou Mama Diabate interacting with the crowd.",
+      "imageUrl": "/images/gallery-8.png",
+      "imageHint": "singer crowd"
+    },
+    {
+      "id": "gallery-9",
+      "description": "An artistic shot of Djessou Mama Diabate with a kora.",
+      "imageUrl": "/images/gallery-9.png",
+      "imageHint": "musician kora"
     }
   ]
 }
