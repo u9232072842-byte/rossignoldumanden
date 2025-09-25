@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -5,28 +7,48 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight, Calendar, MapPin } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
+import * as React from 'react';
 
 export default function Home() {
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-artist');
+  const heroImages = PlaceHolderImages.filter(p => p.id.startsWith('hero-'));
   const eventImage = PlaceHolderImages.find(p => p.id === 'event-paris');
+
+  const plugin = React.useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
+  )
 
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
         <section className="relative w-full h-[60vh] md:h-[80vh]">
-          {heroImage && (
-            <Image
-              src={heroImage.imageUrl}
-              alt={heroImage.description}
-              fill
-              className="object-cover object-top"
-              priority
-              data-ai-hint={heroImage.imageHint}
-            />
-          )}
+          <Carousel
+            className="w-full h-full"
+            plugins={[plugin.current]}
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+          >
+            <CarouselContent>
+              {heroImages.map((image) => (
+                <CarouselItem key={image.id}>
+                  <div className="relative h-[60vh] md:h-[80vh]">
+                    <Image
+                      src={image.imageUrl}
+                      alt={image.description}
+                      fill
+                      className="object-cover object-center"
+                      priority={image.id === 'hero-artist'}
+                      data-ai-hint={image.imageHint}
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-          <div className="relative container h-full flex flex-col items-start justify-end pb-12 md:pb-24 text-left">
-            <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+            <h1 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
               Le Rossignol du Manding
             </h1>
             <p className="mt-4 max-w-2xl text-lg md:text-xl text-foreground/80">

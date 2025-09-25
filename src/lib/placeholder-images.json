@@ -7,6 +7,18 @@
       "imageHint": "musician portrait"
     },
     {
+      "id": "hero-guitar",
+      "description": "Djessou Manding playing guitar on stage",
+      "imageUrl": "https://images.unsplash.com/photo-1464375117522-1311d6a5b81f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "musician guitar"
+    },
+    {
+      "id": "hero-crowd",
+      "description": "Djessou Manding performing for a large crowd",
+      "imageUrl": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "imageHint": "concert crowd"
+    },
+    {
       "id": "event-paris",
       "description": "Concert hall for the 30th anniversary event in Paris",
       "imageUrl": "https://images.unsplash.com/photo-1613210434051-4b00d62d03fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29uY2VydCUyMGhhbGx8ZW58MHx8fHwxNzU4NzIyOTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
