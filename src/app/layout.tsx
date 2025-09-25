@@ -8,6 +8,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { CartProvider } from '@/context/cart-context';
 import WhatsAppWidget from '@/components/whatsapp-widget';
 import AssistantWidget from '@/components/assistant-widget';
+import { FirebaseClientProvider } from '@/firebase/client-provider';
 
 export const metadata: Metadata = {
   title: 'Djessou Mama Diabate | Le Rossignol du Manding',
@@ -28,14 +29,16 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
       </head>
       <body className={cn('font-body antialiased min-h-screen flex flex-col')}>
-        <CartProvider>
-          <Header />
-          <main className="flex-grow">{children}</main>
-          <Footer />
-          <Toaster />
-          <WhatsAppWidget />
-          <AssistantWidget />
-        </CartProvider>
+        <FirebaseClientProvider>
+          <CartProvider>
+            <Header />
+            <main className="flex-grow">{children}</main>
+            <Footer />
+            <Toaster />
+            <WhatsAppWidget />
+            <AssistantWidget />
+          </CartProvider>
+        </FirebaseClientProvider>
       </body>
     </html>
   );
