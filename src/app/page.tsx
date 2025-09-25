@@ -108,43 +108,6 @@ export default function Home() {
           </div>
         </section>
         
-        <section id="manager" className="w-full py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-              <div className="flex items-center justify-center order-last lg:order-first">
-                <div className="relative p-2 rounded-lg shadow-2xl bg-card">
-                   {managerImage && (
-                    <Image
-                      src={managerImage.imageUrl}
-                      alt={managerImage.description}
-                      width={400}
-                      height={500}
-                      className="rounded-lg object-cover aspect-[4/5]"
-                      data-ai-hint={managerImage.imageHint}
-                    />
-                   )}
-                </div>
-              </div>
-              <Card className="shadow-xl text-center lg:text-left">
-                  <CardHeader>
-                    <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                      Management & Production
-                    </CardTitle>
-                    <CardDescription className="text-xl">Diabaté Bangaly Fodé</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground md:text-xl/relaxed">
-                      Fils de la légendaire Djessou Mama Diabate, Diabaté Bangaly Fodé a hérité de la passion familiale pour la musique et la culture mandingue. En tant que PDG de BF France, il est le pilier derrière la stratégie de carrière et le développement international de l'artiste.
-                    </p>
-                    <p className="text-muted-foreground md:text-xl/relaxed">
-                      Alliant une vision moderne du management à un profond respect de l'héritage culturel, il œuvre pour que la voix de sa mère continue de résonner à travers le monde, assurant la pérennité de son art pour les générations futures.
-                    </p>
-                  </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
         <section id="events" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -194,6 +157,43 @@ export default function Home() {
                     </CardFooter>
                   </div>
                 </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section id="manager" className="w-full py-12 md:py-24 lg:py-32">
+          <div className="container px-4 md:px-6">
+            <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
+              <div className="flex items-center justify-center order-last lg:order-first">
+                <div className="relative p-2 rounded-lg shadow-2xl bg-card">
+                   {managerImage && (
+                    <Image
+                      src={managerImage.imageUrl}
+                      alt={managerImage.description}
+                      width={400}
+                      height={500}
+                      className="rounded-lg object-cover aspect-[4/5]"
+                      data-ai-hint={managerImage.imageHint}
+                    />
+                   )}
+                </div>
+              </div>
+              <Card className="shadow-xl text-center lg:text-left">
+                  <CardHeader>
+                    <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                      Management
+                    </CardTitle>
+                    <CardDescription className="text-xl">Diabaté Bangaly Fodé</CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-muted-foreground md:text-xl/relaxed">
+                      Fils de la légendaire Djessou Mama Diabate, Diabaté Bangaly Fodé a hérité de la passion familiale pour la musique et la culture mandingue. En tant que PDG de BF France, il est le pilier derrière la stratégie de carrière et le développement international de l'artiste.
+                    </p>
+                    <p className="text-muted-foreground md:text-xl/relaxed">
+                      Alliant une vision moderne du management à un profond respect de l'héritage culturel, il œuvre pour que la voix de sa mère continue de résonner à travers le monde, assurant la pérennité de son art pour les générations futures.
+                    </p>
+                  </CardContent>
               </Card>
             </div>
           </div>
