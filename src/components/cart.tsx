@@ -13,7 +13,7 @@ import { Button } from '@/components/ui/button';
 import { useCart } from '@/context/cart-context';
 import { ShoppingCart, Plus, Minus, Trash2 } from 'lucide-react';
 import Image from 'next/image';
-import { Separator } from '@/components/ui/separator';
+import Link from 'next/link';
 
 export function Cart() {
   const {
@@ -102,8 +102,10 @@ export function Cart() {
                   <span>Total</span>
                   <span>{totalPrice.toFixed(2)} €</span>
                 </div>
-                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                  Procéder au paiement
+                <Button asChild size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => setCartOpen(false)}>
+                  <Link href="/checkout">
+                    Procéder au paiement
+                  </Link>
                 </Button>
               </div>
             </SheetFooter>
