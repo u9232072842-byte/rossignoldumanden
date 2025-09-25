@@ -77,6 +77,30 @@
       "description": "A placeholder QR code for a ticket",
       "imageUrl": "https://images.unsplash.com/photo-1626682561113-d1db402cc866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxciUyMGNvZGV8ZW58MHx8fHwxNzU4NzcxMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "qr code"
+    },
+    {
+      "id": "album-nna",
+      "description": "Album cover for N'na",
+      "imageUrl": "https://images.unsplash.com/photo-1511379938547-c1f69419868d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxhbGJ1bSUyMGNvdmVyfGVufDB8fHx8MTc1ODk3OTgwMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "album cover"
+    },
+    {
+      "id": "album-kouroussaka",
+      "description": "Album cover for Kouroussaka",
+      "imageUrl": "https://images.unsplash.com/photo-1487180144351-b8472da7d491?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhbGJ1bSUyMGNvdmVyfGVufDB8fHx8MTc1ODk3OTgwMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "album art"
+    },
+    {
+      "id": "album-foly",
+      "description": "Album cover for Foly",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhZnJpY2FuJTIwcG9ydHJhaXR8ZW58MHx8fHwxNzU4OTgwMDM3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "portrait music"
+    },
+    {
+      "id": "album-heritage",
+      "description": "Album cover for Héritage",
+      "imageUrl": "https://images.unsplash.com/photo-1588243740949-8661a3559fab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhbGJ1bSUyMGNvdmVyfGVufDB8fHx8MTc1ODk3OTgwMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "music art"
     }
   ]
 }

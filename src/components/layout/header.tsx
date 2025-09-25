@@ -22,6 +22,12 @@ export default function Header() {
               Événements
             </Link>
             <Link
+              href="/albums"
+              className="transition-colors hover:text-foreground/80 text-foreground/60"
+            >
+              Albums
+            </Link>
+            <Link
               href="/shop"
               className="transition-colors hover:text-foreground/80 text-foreground/60"
             >
