@@ -49,7 +49,6 @@ export default function Home() {
                       fill
                       className="object-cover object-center"
                       priority={image.id === 'hero-artist'}
-                      data-ai-hint={image.imageHint}
                     />
                   </div>
                 </CarouselItem>
@@ -99,7 +98,6 @@ export default function Home() {
                       width={400}
                       height={500}
                       className="rounded-lg object-cover aspect-[4/5]"
-                      data-ai-hint={aboutImage.imageHint}
                     />
                    )}
                 </div>
@@ -128,7 +126,6 @@ export default function Home() {
                         alt={eventImage.description}
                         fill
                         className="object-cover"
-                        data-ai-hint={eventImage.imageHint}
                       />
                     )}
                   </div>
@@ -174,7 +171,6 @@ export default function Home() {
                       width={400}
                       height={500}
                       className="rounded-lg object-cover aspect-[4/5]"
-                      data-ai-hint={managerImage.imageHint}
                     />
                    )}
                 </div>

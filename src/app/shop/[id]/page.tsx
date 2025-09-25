@@ -62,9 +62,9 @@ export default function ProductDetailPage() {
                         <Image
                           src={image.imageUrl}
                           alt={image.description}
-                          fill
+                          width={500}
+                          height={500}
                           className="object-cover"
-                          data-ai-hint={image.imageHint}
                         />
                       </div>
                     </Card>

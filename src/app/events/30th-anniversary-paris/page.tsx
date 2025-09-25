@@ -118,9 +118,9 @@ export default function EventDetailPage() {
               <Image
                 src={eventImage.imageUrl}
                 alt={eventImage.description}
-                fill
+                width={800}
+                height={450}
                 className="object-cover"
-                data-ai-hint={eventImage.imageHint}
               />
             )}
           </div>

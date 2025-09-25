@@ -127,9 +127,9 @@ export default function DonatePage() {
               <Image
                 src={supportImage.imageUrl}
                 alt={supportImage.description}
-                fill
+                width={800}
+                height={450}
                 className="object-cover object-top"
-                data-ai-hint={supportImage.imageHint}
               />
             )}
           </div>

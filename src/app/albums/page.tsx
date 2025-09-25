@@ -53,9 +53,9 @@ export default function AlbumsPage() {
                   <Image
                     src={album.image.imageUrl}
                     alt={album.image.description}
-                    fill
+                    width={500}
+                    height={500}
                     className="object-cover"
-                    data-ai-hint={album.image.imageHint}
                   />
                 )}
               </div>

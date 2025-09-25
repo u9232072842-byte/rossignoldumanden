@@ -36,9 +36,9 @@ export default function ShopPage() {
                   <Image
                     src={product.images[0].imageUrl}
                     alt={product.images[0].description}
-                    fill
+                    width={500}
+                    height={500}
                     className="object-cover"
-                    data-ai-hint={product.images[0].imageHint}
                   />
                 )}
               </div>

@@ -57,7 +57,8 @@ export function Cart() {
                            <Image
                             src={item.product.images[0].imageUrl}
                             alt={item.product.images[0].description}
-                            fill
+                            width={80}
+                            height={80}
                             className="object-cover"
                           />
                         )}

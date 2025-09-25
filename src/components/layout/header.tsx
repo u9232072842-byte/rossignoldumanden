@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { User } from 'lucide-react';
 import { Cart } from '@/components/cart';
+import Image from 'next/image';
 
 export default function Header() {
   return (
@@ -10,7 +11,8 @@ export default function Header() {
       <div className="container flex h-16 items-center">
         <div className="mr-auto flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-headline text-2xl font-bold tracking-tighter">
+             <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-full"/>
+            <span className="hidden sm:inline-block font-headline text-2xl font-bold tracking-tighter">
               Djessou Mama Diabate
             </span>
           </Link>

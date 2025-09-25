@@ -79,7 +79,8 @@ export default function CheckoutPage() {
                                             <Image
                                                 src={item.product.images[0].imageUrl}
                                                 alt={item.product.images[0].description}
-                                                fill
+                                                width={64}
+                                                height={64}
                                                 className="object-cover"
                                             />
                                         )}
