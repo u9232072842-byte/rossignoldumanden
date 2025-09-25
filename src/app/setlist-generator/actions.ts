@@ -14,6 +14,6 @@ export async function generateSetlistSuggestionsAction(
     return result;
   } catch (error) {
     console.error('Error in generateSetlistSuggestionsAction:', error);
-    throw new Error('Failed to generate setlist suggestions.');
+    throw new Error('Échec de la génération des suggestions de setlist.');
   }
 }
