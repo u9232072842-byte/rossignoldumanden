@@ -6,6 +6,7 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 import { CartProvider } from '@/context/cart-context';
+import WhatsAppWidget from '@/components/whatsapp-widget';
 
 export const metadata: Metadata = {
   title: 'Djessou Mama Diabate | Le Rossignol du Manding',
@@ -31,6 +32,7 @@ export default function RootLayout({
           <main className="flex-grow">{children}</main>
           <Footer />
           <Toaster />
+          <WhatsAppWidget />
         </CartProvider>
       </body>
     </html>
