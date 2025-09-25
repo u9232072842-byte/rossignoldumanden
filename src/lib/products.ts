@@ -23,7 +23,7 @@ const products: Product[] = [
       images: PlaceHolderImages.filter(p => p.id.startsWith('merch-cap-')),
       category: 'vestimentaire',
        variants: {
-        color: ['#000000', '#1E40AF', '#BE123C'],
+        color: ['#000000', '#FFFFFF', '#1E40AF', '#BE123C'],
       }
     },
      {
@@ -35,7 +35,7 @@ const products: Product[] = [
       category: 'vestimentaire',
       variants: {
         size: ['S', 'M', 'L', 'XL'],
-        color: ['#111827', '#4B5563'],
+        color: ['#111827', '#FFFFFF', '#4B5563'],
       }
     },
     {
