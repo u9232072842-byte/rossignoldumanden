@@ -43,6 +43,30 @@
       "imageHint": "concert poster"
     },
     {
+      "id": "merch-cap",
+      "description": "An embroidered cap",
+      "imageUrl": "https://images.unsplash.com/photo-1654673223509-bd5a71e52f21?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxjYXAlMjBtb2NrdXB8ZW58MHx8fHwxNzU4ODIwNzk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cap mockup"
+    },
+    {
+      "id": "merch-hoodie",
+      "description": "A hoodie with a custom design",
+      "imageUrl": "https://images.unsplash.com/photo-1554411529-ee36dfde51b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxob29kaWUlMjBtb2NrdXB8ZW58MHx8fHwxNzU4ODIwNzk4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hoodie mockup"
+    },
+    {
+      "id": "merch-book",
+      "description": "A biography book cover",
+      "imageUrl": "https://images.unsplash.com/photo-1511108690759-009324a90311?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxib29rJTIwY292ZXJ8ZW58MHx8fHwxNzU4NzU3MDc5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "book cover"
+    },
+    {
+      "id": "merch-tote",
+      "description": "A tote bag with a custom design",
+      "imageUrl": "https://images.unsplash.com/photo-1632942480766-9cee148c4ee8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHx0b3RlJTIwYmFnfGVufDB8fHx8MTc1ODc4ODQyNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tote bag"
+    },
+    {
       "id": "qr-code",
       "description": "A placeholder QR code for a ticket",
       "imageUrl": "https://images.unsplash.com/photo-1626682561113-d1db402cc866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxciUyMGNvZGV8ZW58MHx8fHwxNzU4NzcxMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
