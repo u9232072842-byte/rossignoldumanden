@@ -15,7 +15,7 @@ export default function DonatePage() {
   const supportImage = PlaceHolderImages.find(p => p.id === 'hero-artist');
   const [amount, setAmount] = useState(20);
   const [customAmount, setCustomAmount] = useState('');
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [step, setStep] = useState('amount'); // amount, payment, confirmation
   
   const suggestedAmounts = [10, 20, 50, 100];
 
@@ -34,7 +34,84 @@ export default function DonatePage() {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setStep('payment');
+  }
+
+  const renderContent = () => {
+    switch(step) {
+      case 'amount':
+        return (
+          <form onSubmit={handleSubmit}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2 font-headline text-2xl">
+                <Gift className="w-6 h-6 text-primary" />
+                Faire une donation
+              </CardTitle>
+              <CardDescription>Choisissez un montant ou entrez le vôtre.</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                  {suggestedAmounts.map(sa => (
+                      <Button
+                          key={sa}
+                          type="button"
+                          variant={amount === sa && !customAmount ? 'default' : 'outline'}
+                          className={cn("h-16 text-lg font-bold", amount === sa && !customAmount && 'bg-primary hover:bg-primary/90')}
+                          onClick={() => handleAmountClick(sa)}
+                      >
+                          {sa} €
+                      </Button>
+                  ))}
+              </div>
+              <div>
+                <Label htmlFor="customAmount" className="sr-only">Montant personnalisé</Label>
+                <Input 
+                  id="customAmount" 
+                  type="number" 
+                  placeholder="Ou entrez un montant"
+                  className="h-16 text-lg text-center font-bold"
+                  value={customAmount}
+                  onChange={handleCustomAmountChange}
+                  min="1"
+                  />
+              </div>
+            </CardContent>
+            <CardFooter>
+               <Button type="submit" size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-14 text-lg">
+                  Procéder au paiement de {amount} € <CreditCard className="ml-2 h-5 w-5" />
+              </Button>
+            </CardFooter>
+          </form>
+        );
+      case 'payment':
+        return (
+          <CardContent className="p-8">
+              <h3 className="font-headline text-xl mb-4 text-center">Paiement simulé</h3>
+              <p className="text-center text-muted-foreground mb-6">Sélectionnez un mode de paiement pour finaliser votre don de {amount} €.</p>
+              <div className="space-y-4">
+                  <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setStep('confirmation')}>
+                      Payer avec Stripe
+                  </Button>
+                  <Button size="lg" className="w-full bg-orange-500 hover:bg-orange-600 text-white" onClick={() => setStep('confirmation')}>
+                      Payer avec Orange Money
+                  </Button>
+                  <Button variant="outline" className="w-full" onClick={() => setStep('amount')}>
+                    Retour
+                  </Button>
+              </div>
+          </CardContent>
+        );
+      case 'confirmation':
+        return (
+          <CardContent className="p-8 text-center flex flex-col items-center justify-center min-h-[400px]">
+              <Heart className="w-16 h-16 text-primary mb-4" />
+              <h3 className="font-headline text-2xl mb-2">Merci du fond du cœur !</h3>
+              <p className="text-muted-foreground">Votre soutien est infiniment apprécié. Grâce à vous, la musique continue de vibrer.</p>
+          </CardContent>
+        );
+      default:
+        return null;
+    }
   }
 
   return (
@@ -58,55 +135,7 @@ export default function DonatePage() {
           </div>
         </div>
         <Card className="shadow-lg">
-          {isSubmitted ? (
-            <CardContent className="p-8 text-center flex flex-col items-center justify-center min-h-[300px]">
-                <Heart className="w-16 h-16 text-primary mb-4" />
-                <h3 className="font-headline text-2xl mb-2">Merci du fond du cœur !</h3>
-                <p className="text-muted-foreground">Votre soutien est infiniment apprécié. Grâce à vous, la musique continue de vibrer.</p>
-            </CardContent>
-          ) : (
-            <form onSubmit={handleSubmit}>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2 font-headline text-2xl">
-                  <Gift className="w-6 h-6 text-primary" />
-                  Faire une donation
-                </CardTitle>
-                <CardDescription>Choisissez un montant ou entrez le vôtre.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="grid grid-cols-2 gap-4">
-                    {suggestedAmounts.map(sa => (
-                        <Button
-                            key={sa}
-                            type="button"
-                            variant={amount === sa && !customAmount ? 'default' : 'outline'}
-                            className={cn("h-16 text-lg font-bold", amount === sa && !customAmount && 'bg-primary hover:bg-primary/90')}
-                            onClick={() => handleAmountClick(sa)}
-                        >
-                            {sa} €
-                        </Button>
-                    ))}
-                </div>
-                <div>
-                  <Label htmlFor="customAmount" className="sr-only">Montant personnalisé</Label>
-                  <Input 
-                    id="customAmount" 
-                    type="number" 
-                    placeholder="Ou entrez un montant"
-                    className="h-16 text-lg text-center font-bold"
-                    value={customAmount}
-                    onChange={handleCustomAmountChange}
-                    min="1"
-                    />
-                </div>
-              </CardContent>
-              <CardFooter>
-                 <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-14 text-lg">
-                    Procéder au paiement de {amount} € <CreditCard className="ml-2 h-5 w-5" />
-                </Button>
-              </CardFooter>
-            </form>
-          )}
+          {renderContent()}
         </Card>
       </div>
     </div>
