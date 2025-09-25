@@ -1,3 +1,40 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-artist",
+      "description": "A portrait of Djessou Manding",
+      "imageUrl": "https://images.unsplash.com/photo-1675859427928-fe41277572b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtdXNpY2lhbiUyMHBvcnRyYWl0fGVufDB8fHx8MTc1ODcyNDAxOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "musician portrait"
+    },
+    {
+      "id": "event-paris",
+      "description": "Concert hall for the 30th anniversary event in Paris",
+      "imageUrl": "https://images.unsplash.com/photo-1613210434051-4b00d62d03fb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8Y29uY2VydCUyMGhhbGx8ZW58MHx8fHwxNzU4NzIyOTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "concert hall"
+    },
+    {
+      "id": "merch-tshirt",
+      "description": "A t-shirt with a custom design",
+      "imageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx0c2hpcnQlMjBtb2NrdXB8ZW58MHx8fHwxNzU4NzkxNzg5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tshirt mockup"
+    },
+    {
+      "id": "merch-vinyl",
+      "description": "A vinyl record of an album",
+      "imageUrl": "https://images.unsplash.com/photo-1542395118-9d95347995bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8dmlueWwlMjByZWNvcmR8ZW58MHx8fHwxNzU4NzI1ODk0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "vinyl record"
+    },
+    {
+      "id": "merch-poster",
+      "description": "A concert poster",
+      "imageUrl": "https://images.unsplash.com/photo-1690131054353-52367f029340?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxjb25jZXJ0JTIwcG9zdGVyfGVufDB8fHx8MTc1ODc1MzE5NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "concert poster"
+    },
+    {
+      "id": "qr-code",
+      "description": "A placeholder QR code for a ticket",
+      "imageUrl": "https://images.unsplash.com/photo-1626682561113-d1db402cc866?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxxciUyMGNvZGV8ZW58MHx8fHwxNzU4NzcxMDY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "qr code"
+    }
+  ]
 }
