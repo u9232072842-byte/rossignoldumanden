@@ -6,8 +6,8 @@ import Footer from '@/components/layout/footer';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Le Rossignol du Manding',
-  description: 'Site officiel de Djessou Manding, le Rossignol du Manding.',
+  title: 'Djessou Mama Diabate | Le Rossignol du Manding',
+  description: 'Site officiel de Djessou Mama Diabate, le Rossignol du Manding.',
 };
 
 export default function RootLayout({

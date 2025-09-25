@@ -9,7 +9,7 @@ export default function Header() {
         <div className="mr-auto flex items-center">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <span className="font-headline text-2xl font-bold tracking-tighter">
-              Le Rossignol du Manding
+              Djessou Mama Diabate
             </span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">

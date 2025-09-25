@@ -106,7 +106,7 @@ export default function EventDetailPage() {
           <div className="mt-8">
             <h1 className="font-headline text-4xl font-bold">Célébration du 30ème anniversaire</h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Un concert unique pour célébrer trois décennies de génie musical. Rejoignez Djessou Manding pour une nuit inoubliable au cœur de Paris.
+              Un concert unique pour célébrer trois décennies de génie musical. Rejoignez Djessou Mama Diabate pour une nuit inoubliable au cœur de Paris.
             </p>
             <div className="mt-6 space-y-3">
               <div className="flex items-center gap-3">

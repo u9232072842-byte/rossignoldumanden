@@ -58,14 +58,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
             <h1 className="font-headline text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
-              Le Rossignol du Manding
+              Djessou Mama Diabate - Le Rossignol du Manding
             </h1>
             <p className="mt-4 max-w-2xl text-lg md:text-xl text-foreground/80">
-              Célébrant 30 ans de la voix d'or de Djessou Manding. Vivez l'héritage, la musique, l'âme.
+              Célébrant 30 ans de la voix d'or. Vivez l'héritage, la musique, l'âme.
             </p>
             <div className="mt-6">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
-                <Link href="#events">Voir les événements à venir</Link>
+                <Link href="#events">Voir l'événement à venir</Link>
               </Button>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function Home() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <p className="text-muted-foreground md:text-xl/relaxed">
-                      Depuis trois décennies, Djessou Manding, surnommée affectueusement "Le Rossignol du Manding", captive les publics du monde entier avec sa voix soul et ses mélodies envoûtantes. Sa musique est un pont entre la tradition mandingue et les sonorités modernes, créant une expérience sonore unique et intemporelle.
+                      Depuis trois décennies, Djessou Mama Diabate, surnommée affectueusement "Le Rossignol du Manding", captive les publics du monde entier avec sa voix soul et ses mélodies envoûtantes. Sa musique est un pont entre la tradition mandingue et les sonorités modernes, créant une expérience sonore unique et intemporelle.
                     </p>
                     <p className="text-muted-foreground md:text-xl/relaxed">
                       Née au cœur d'une famille de griots, la musique a toujours été sa vocation. Cet anniversaire de 30 ans de carrière n'est pas seulement une célébration de sa musique, mais aussi un hommage à un héritage culturel riche qu'elle continue de partager avec passion et générosité.
@@ -135,7 +135,7 @@ export default function Home() {
                     <CardHeader>
                       <Badge variant="default" className="w-fit bg-accent text-accent-foreground mb-2">Événement en vedette</Badge>
                       <CardTitle className="font-headline text-3xl">Célébration du 30ème anniversaire</CardTitle>
-                      <CardDescription className="text-lg">Une soirée exclusive pour célébrer l'héritage de Djessou Manding.</CardDescription>
+                      <CardDescription className="text-lg">Une soirée exclusive pour célébrer l'héritage de Djessou Mama Diabate.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4 flex-grow">
                       <div className="flex items-center gap-2">
