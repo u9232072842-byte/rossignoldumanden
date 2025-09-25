@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useRef } from 'react';
@@ -78,8 +79,8 @@ export default function EventDetailPage() {
                     <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setPurchaseStep('confirmation')}>
                         Payer avec Stripe
                     </Button>
-                    <Button size="lg" className="w-full bg-orange-500 hover:bg-orange-600 text-white" onClick={() => setPurchaseStep('confirmation')}>
-                        Payer avec Orange Money
+                    <Button size="lg" className="w-full bg-sky-600 hover:bg-sky-700 text-white" onClick={() => setPurchaseStep('confirmation')}>
+                        Payer avec PayPal
                     </Button>
                 </div>
             </>

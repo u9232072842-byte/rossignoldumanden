@@ -92,8 +92,8 @@ export default function DonatePage() {
                   <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setStep('confirmation')}>
                       Payer avec Stripe
                   </Button>
-                  <Button size="lg" className="w-full bg-orange-500 hover:bg-orange-600 text-white" onClick={() => setStep('confirmation')}>
-                      Payer avec Orange Money
+                  <Button size="lg" className="w-full bg-sky-600 hover:bg-sky-700 text-white" onClick={() => setStep('confirmation')}>
+                      Payer avec PayPal
                   </Button>
                   <Button variant="outline" className="w-full" onClick={() => setStep('amount')}>
                     Retour
