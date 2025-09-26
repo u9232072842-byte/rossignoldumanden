@@ -32,6 +32,7 @@ export default function LoginPage() {
       });
       router.push('/');
     } catch (error: any) {
+      console.error("Erreur d'authentification:", error.message);
       toast({
         variant: 'destructive',
         title: 'Erreur',

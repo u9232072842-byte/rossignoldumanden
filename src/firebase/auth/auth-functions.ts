@@ -13,7 +13,7 @@ import {
 const getFirebaseAuthErrorMessage = (error: AuthError): string => {
   switch (error.code) {
     case 'auth/invalid-email':
-      return 'L\'adresse e-mail n\'est pas valide.';
+      return "L'adresse e-mail n'est pas valide.";
     case 'auth/user-disabled':
       return 'Ce compte utilisateur a été désactivé.';
     case 'auth/user-not-found':
@@ -25,9 +25,11 @@ const getFirebaseAuthErrorMessage = (error: AuthError): string => {
     case 'auth/weak-password':
       return 'Le mot de passe doit comporter au moins 6 caractères.';
     case 'auth/operation-not-allowed':
-        return "L'authentification par e-mail/mot de passe n'est pas activée.";
+        return "L'authentification par e-mail/mot de passe n'est pas activée. Veuillez l'activer dans la console Firebase.";
+    case 'auth/unauthorized-domain':
+        return "Ce domaine n'est pas autorisé pour les opérations d'authentification. Veuillez l'ajouter dans la console Firebase.";
     default:
-      return 'Une erreur d\'authentification s\'est produite. Veuillez réessayer.';
+      return error.message || "Une erreur d'authentification inconnue s'est produite. Veuillez réessayer.";
   }
 };
 
