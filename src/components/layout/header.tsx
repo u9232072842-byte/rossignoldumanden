@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -12,7 +13,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { User, LogOut, Loader2 } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { User, LogOut, Loader2, Menu, Music, Calendar, ShoppingBag, Heart, Image as ImageIcon } from 'lucide-react';
 import { Cart } from '@/components/cart';
 import { useUser } from '@/firebase/auth/use-user';
 import { signOutUser } from '@/firebase/auth/auth-functions';
@@ -21,11 +23,20 @@ import { useRouter } from 'next/navigation';
 export default function Header() {
   const { user, loading } = useUser();
   const router = useRouter();
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
 
   const handleSignOut = async () => {
     await signOutUser();
     router.push('/');
   };
+
+  const navLinks = [
+    { href: '/#events', label: 'Événements', icon: Calendar },
+    { href: '/gallery', label: 'Galerie', icon: ImageIcon },
+    { href: '/albums', label: 'Albums', icon: Music },
+    { href: '/shop', label: 'Boutique', icon: ShoppingBag },
+    { href: '/donate', label: 'Soutenir', icon: Heart },
+  ];
 
   const renderUserAuth = () => {
     if (loading) {
@@ -74,44 +85,59 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
-        <div className="mr-auto flex items-center">
+        <div className="flex items-center md:hidden">
+          <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Ouvrir le menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+              <div className="flex flex-col space-y-4">
+                <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => setIsSheetOpen(false)}>
+                  <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-full" />
+                  <span className="font-headline text-xl font-bold tracking-tighter">
+                    Djessou Mama Diabate
+                  </span>
+                </Link>
+                <nav className="flex flex-col space-y-2">
+                  {navLinks.map(link => {
+                    const LinkIcon = link.icon;
+                    return (
+                        <SheetClose key={link.href} asChild>
+                            <Link
+                                href={link.href}
+                                className="flex items-center gap-3 rounded-lg px-3 py-2 text-lg text-muted-foreground transition-colors hover:text-foreground"
+                            >
+                                <LinkIcon className="h-5 w-5" />
+                                {link.label}
+                            </Link>
+                        </SheetClose>
+                    );
+                  })}
+                </nav>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+        <div className="flex flex-1 items-center justify-start md:justify-start">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-             <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-full"/>
+            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-full" />
             <span className="hidden sm:inline-block font-headline text-2xl font-bold tracking-tighter">
               Djessou Mama Diabate
             </span>
           </Link>
           <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
-            <Link
-              href="/#events"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Événements
-            </Link>
-             <Link
-              href="/gallery"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Galerie
-            </Link>
-            <Link
-              href="/albums"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Albums
-            </Link>
-            <Link
-              href="/shop"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Boutique
-            </Link>
-            <Link
-              href="/donate"
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
-            >
-              Soutenir
-            </Link>
+            {navLinks.map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="transition-colors hover:text-foreground/80 text-foreground/60"
+              >
+                {link.label}
+              </Link>
+            ))}
           </nav>
         </div>
         <div className="flex items-center space-x-2">

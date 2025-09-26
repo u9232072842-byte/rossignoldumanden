@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="relative w-full h-[60vh] md:h-[80vh]">
+        <section className="relative w-full h-[80vh] md:h-[90vh]">
           <Carousel
             className="w-full h-full"
             plugins={[plugin.current]}
@@ -45,7 +45,7 @@ export default function Home() {
             <CarouselContent>
               {heroImages.map((image) => (
                 <CarouselItem key={image.id}>
-                  <div className="relative h-[60vh] md:h-[80vh]">
+                  <div className="relative h-[80vh] md:h-[90vh]">
                     <Image
                       src={image.imageUrl}
                       alt={image.description}
@@ -59,11 +59,12 @@ export default function Home() {
             </CarouselContent>
           </Carousel>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-            <h1 className="font-headline text-2xl md:text-3xl lg:text-4xl font-bold tracking-tighter text-foreground">
-              Djessou Mama Diabate - Le Rossignol du Manding
+          <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-4 pb-20 md:pb-24">
+            <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-foreground">
+              Djessou Mama Diabate
             </h1>
-            <p className="mt-4 max-w-2xl text-lg md:text-xl text-foreground/80">
+             <p className="mt-2 text-lg md:text-xl text-foreground/90 font-medium">Le Rossignol du Manding</p>
+            <p className="mt-4 max-w-2xl text-md md:text-lg text-foreground/80">
               Célébrant 30 ans de la voix d'or. Vivez l'héritage, la musique, l'âme.
             </p>
             <div className="mt-6">
