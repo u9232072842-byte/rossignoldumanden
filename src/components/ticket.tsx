@@ -48,7 +48,7 @@ const TicketComponent = forwardRef<HTMLDivElement, TicketComponentProps>(
             </div>
           </div>
           <div className="p-2 bg-white rounded-md">
-             <QRCode value={ticketId} size={100} />
+             <QRCode value={ticketId} size={100} bgColor="#FFFFFF" fgColor="#000000" />
           </div>
         </div>
         <div className="text-center pt-4 mt-4 border-t border-dashed border-muted-foreground">
