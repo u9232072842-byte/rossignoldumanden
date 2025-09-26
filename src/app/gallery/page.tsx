@@ -3,13 +3,14 @@
 
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 import {
   Dialog,
   DialogContent,
   DialogTrigger,
   DialogTitle,
   DialogHeader,
+  DialogDescription,
 } from "@/components/ui/dialog"
 import { useState } from 'react';
 
@@ -57,6 +58,9 @@ export default function GalleryPage() {
              <DialogContent className="max-w-3xl p-0 border-0">
                 <DialogHeader>
                   <DialogTitle className="sr-only">{selectedImage.description}</DialogTitle>
+                   <DialogDescription className="sr-only">
+                    Image en plein écran: {selectedImage.description}
+                  </DialogDescription>
                 </DialogHeader>
                 <div className="relative aspect-video">
                     <Image

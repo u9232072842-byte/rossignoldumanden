@@ -217,7 +217,7 @@ export default function Home() {
                       src={`https://www.youtube.com/embed/${video.id}`}
                       title={video.title}
                       frameBorder="0"
-                      allow="autoplay; clipboard-write; picture-in-picture"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                       className="absolute top-0 left-0 w-full h-full"
                     ></iframe>
