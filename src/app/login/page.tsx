@@ -32,7 +32,6 @@ export default function LoginPage() {
       });
       router.push('/');
     } catch (error: any) {
-      console.error(error);
       toast({
         variant: 'destructive',
         title: 'Erreur',
