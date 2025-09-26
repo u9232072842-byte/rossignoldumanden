@@ -1,11 +1,76 @@
 
+'use client';
+
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { User } from 'lucide-react';
-import { Cart } from '@/components/cart';
 import Image from 'next/image';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import { User, LogOut, Loader2 } from 'lucide-react';
+import { Cart } from '@/components/cart';
+import { useUser } from '@/firebase/auth/use-user';
+import { signOutUser } from '@/firebase/auth/auth-functions';
+import { useRouter } from 'next/navigation';
 
 export default function Header() {
+  const { user, loading } = useUser();
+  const router = useRouter();
+
+  const handleSignOut = async () => {
+    await signOutUser();
+    router.push('/');
+  };
+
+  const renderUserAuth = () => {
+    if (loading) {
+      return (
+        <Button variant="ghost" size="icon" disabled>
+          <Loader2 className="h-5 w-5 animate-spin" />
+          <span className="sr-only">Chargement...</span>
+        </Button>
+      );
+    }
+
+    if (!user) {
+      return (
+        <Button variant="ghost" size="icon" asChild>
+          <Link href="/login">
+            <User className="h-5 w-5" />
+            <span className="sr-only">Profil</span>
+          </Link>
+        </Button>
+      );
+    }
+
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" size="icon">
+            <User className="h-5 w-5" />
+            <span className="sr-only">Profil</span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>
+            <p>Mon Compte</p>
+            <p className="text-xs text-muted-foreground font-normal">{user.email}</p>
+          </DropdownMenuLabel>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem onClick={handleSignOut}>
+            <LogOut className="mr-2 h-4 w-4" />
+            <span>Déconnexion</span>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  };
+
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
@@ -51,10 +116,7 @@ export default function Header() {
         </div>
         <div className="flex items-center space-x-2">
           <Cart />
-          <Button variant="ghost" size="icon">
-            <User className="h-5 w-5" />
-            <span className="sr-only">Profil</span>
-          </Button>
+          {renderUserAuth()}
         </div>
       </div>
     </header>
