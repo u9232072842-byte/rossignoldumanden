@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -51,48 +51,52 @@ export default function LoginPage() {
         </TabsList>
         <TabsContent value="login">
           <Card>
-            <CardHeader>
-              <CardTitle>Connexion</CardTitle>
-              <CardDescription>Accédez à votre compte pour continuer.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="login-email">Email</Label>
-                <Input id="login-email" type="email" placeholder="m@exemple.com" value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="login-password">Mot de passe</Label>
-                <Input id="login-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button className="w-full" onClick={() => handleAuthAction('signIn')} disabled={loading}>
-                {loading ? 'Chargement...' : 'Se connecter'}
-              </Button>
-            </CardFooter>
+            <form onSubmit={(e) => { e.preventDefault(); handleAuthAction('signIn'); }}>
+              <CardHeader>
+                <CardTitle>Connexion</CardTitle>
+                <CardDescription>Accédez à votre compte pour continuer.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="login-email">Email</Label>
+                  <Input id="login-email" type="email" placeholder="m@exemple.com" value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} autoComplete="email" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="login-password">Mot de passe</Label>
+                  <Input id="login-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} autoComplete="current-password" />
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? 'Chargement...' : 'Se connecter'}
+                </Button>
+              </CardFooter>
+            </form>
           </Card>
         </TabsContent>
         <TabsContent value="register">
           <Card>
-            <CardHeader>
-              <CardTitle>Inscription</CardTitle>
-              <CardDescription>Créez un nouveau compte en quelques secondes.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="register-email">Email</Label>
-                <Input id="register-email" type="email" placeholder="m@exemple.com" value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="register-password">Mot de passe</Label>
-                <Input id="register-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button className="w-full" onClick={() => handleAuthAction('signUp')} disabled={loading}>
-                {loading ? 'Chargement...' : "S'inscrire"}
-              </Button>
-            </CardFooter>
+            <form onSubmit={(e) => { e.preventDefault(); handleAuthAction('signUp'); }}>
+              <CardHeader>
+                <CardTitle>Inscription</CardTitle>
+                <CardDescription>Créez un nouveau compte en quelques secondes.</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="register-email">Email</Label>
+                  <Input id="register-email" type="email" placeholder="m@exemple.com" value={email} onChange={(e) => setEmail(e.target.value)} disabled={loading} autoComplete="email" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="register-password">Mot de passe</Label>
+                  <Input id="register-password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} disabled={loading} autoComplete="new-password" />
+                </div>
+              </CardContent>
+              <CardFooter>
+                <Button type="submit" className="w-full" disabled={loading}>
+                  {loading ? 'Chargement...' : "S'inscrire"}
+                </Button>
+              </CardFooter>
+            </form>
           </Card>
         </TabsContent>
       </Tabs>

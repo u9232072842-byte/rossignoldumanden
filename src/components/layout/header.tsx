@@ -105,15 +105,15 @@ export default function Header() {
                   {navLinks.map(link => {
                     const LinkIcon = link.icon;
                     return (
-                        <SheetClose key={link.href} asChild>
-                            <Link
-                                href={link.href}
-                                className="flex items-center gap-3 rounded-lg px-3 py-2 text-lg text-muted-foreground transition-colors hover:text-foreground"
-                            >
-                                <LinkIcon className="h-5 w-5" />
-                                {link.label}
-                            </Link>
-                        </SheetClose>
+                      <SheetClose key={link.href} asChild>
+                        <Link
+                          href={link.href}
+                          className="flex items-center gap-3 rounded-lg px-3 py-2 text-lg text-muted-foreground transition-colors hover:text-foreground"
+                        >
+                          <LinkIcon className="h-5 w-5" />
+                          {link.label}
+                        </Link>
+                      </SheetClose>
                     );
                   })}
                 </nav>

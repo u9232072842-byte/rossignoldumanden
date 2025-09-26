@@ -60,10 +60,10 @@ export default function Home() {
           </Carousel>
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-4 pb-20 md:pb-24">
-            <h1 className="font-headline text-3xl md:text-4xl lg:text-5xl font-bold tracking-tighter text-foreground">
+            <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
               Djessou Mama Diabate
             </h1>
-             <p className="mt-2 text-lg md:text-xl text-foreground/90 font-medium">Le Rossignol du Manding</p>
+            <p className="mt-2 text-lg md:text-xl text-foreground/90 font-medium">Le Rossignol du Manding</p>
             <p className="mt-4 max-w-2xl text-md md:text-lg text-foreground/80">
               Célébrant 30 ans de la voix d'or. Vivez l'héritage, la musique, l'âme.
             </p>
@@ -79,23 +79,23 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <Card className="shadow-xl text-center lg:text-left">
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-headline font-bold tracking-tighter sm:text-3xl">
-                      La Voix d'une Génération
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground md:text-xl/relaxed">
-                      Depuis trois décennies, Djessou Mama Diabate, surnommée affectueusement "Le Rossignol du Manding", captive les publics du monde entier avec sa voix soul et ses mélodies envoûtantes. Sa musique est un pont entre la tradition mandingue et les sonorités modernes, créant une expérience sonore unique et intemporelle.
-                    </p>
-                    <p className="text-muted-foreground md:text-xl/relaxed">
-                      Née au cœur d'une famille de griots, la musique a toujours été sa vocation. Cet anniversaire de 30 ans de carrière n'est pas seulement une célébration de sa musique, mais aussi un hommage à un héritage culturel riche qu'elle continue de partager avec passion et générosité.
-                    </p>
-                  </CardContent>
+                <CardHeader>
+                  <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">
+                    La Voix d'une Génération
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground md:text-xl/relaxed">
+                    Depuis trois décennies, Djessou Mama Diabate, surnommée affectueusement "Le Rossignol du Manding", captive les publics du monde entier avec sa voix soul et ses mélodies envoûtantes. Sa musique est un pont entre la tradition mandingue et les sonorités modernes, créant une expérience sonore unique et intemporelle.
+                  </p>
+                  <p className="text-muted-foreground md:text-xl/relaxed">
+                    Née au cœur d'une famille de griots, la musique a toujours été sa vocation. Cet anniversaire de 30 ans de carrière n'est pas seulement une célébration de sa musique, mais aussi un hommage à un héritage culturel riche qu'elle continue de partager avec passion et générosité.
+                  </p>
+                </CardContent>
               </Card>
               <div className="flex items-center justify-center">
                 <div className="relative p-2 rounded-lg shadow-2xl bg-card">
-                   {aboutImage && (
+                  {aboutImage && (
                     <Image
                       src={aboutImage.imageUrl}
                       alt={aboutImage.description}
@@ -103,19 +103,19 @@ export default function Home() {
                       height={500}
                       className="rounded-lg object-cover aspect-[4/5]"
                     />
-                   )}
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </section>
-        
-        <section id="events" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
+
+        <section id="events" className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-2xl font-headline font-bold tracking-tighter sm:text-3xl">Événements à venir</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Événements à venir</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
                   Rejoignez-nous pour des nuits inoubliables de musique et de célébration.
                 </p>
               </div>
@@ -125,7 +125,7 @@ export default function Home() {
                 <div className="md:flex">
                   <div className="md:w-1/2 relative h-64 md:h-auto">
                     {eventImage && (
-                       <Image
+                      <Image
                         src={eventImage.imageUrl}
                         alt={eventImage.description}
                         fill
@@ -150,7 +150,7 @@ export default function Home() {
                       </div>
                     </CardContent>
                     <CardFooter>
-                       <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                      <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                         <Link href="/events/30th-anniversary-paris">
                           Acheter des billets <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
@@ -163,12 +163,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="manager" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="manager" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="flex items-center justify-center order-last lg:order-first">
                 <div className="relative p-2 rounded-lg shadow-2xl bg-card">
-                   {managerImage && (
+                  {managerImage && (
                     <Image
                       src={managerImage.imageUrl}
                       alt={managerImage.description}
@@ -176,24 +176,24 @@ export default function Home() {
                       height={500}
                       className="rounded-lg object-cover aspect-[4/5]"
                     />
-                   )}
+                  )}
                 </div>
               </div>
               <Card className="shadow-xl text-center lg:text-left">
-                  <CardHeader>
-                    <CardTitle className="text-2xl font-headline font-bold tracking-tighter sm:text-3xl">
-                      Management
-                    </CardTitle>
-                    <CardDescription className="text-xl">Diabaté Bangaly Fodé</CardDescription>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-muted-foreground md:text-xl/relaxed">
-                      Fils de la légendaire Djessou Mama Diabate, Diabaté Bangaly Fodé a hérité de la passion familiale pour la musique et la culture mandingue. En tant que PDG de BF France, il est le pilier derrière la stratégie de carrière et le développement international de l'artiste.
-                    </p>
-                    <p className="text-muted-foreground md:text-xl/relaxed">
-                      Alliant une vision moderne du management à un profond respect de l'héritage culturel, il œuvre pour que la voix de sa mère continue de résonner à travers le monde, assurant la pérennité de son art pour les générations futures.
-                    </p>
-                  </CardContent>
+                <CardHeader>
+                  <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">
+                    Management
+                  </CardTitle>
+                  <CardDescription className="text-xl">Diabaté Bangaly Fodé</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground md:text-xl/relaxed">
+                    Fils de la légendaire Djessou Mama Diabate, Diabaté Bangaly Fodé a hérité de la passion familiale pour la musique et la culture mandingue. En tant que PDG de BF France, il est le pilier derrière la stratégie de carrière et le développement international de l'artiste.
+                  </p>
+                  <p className="text-muted-foreground md:text-xl/relaxed">
+                    Alliant une vision moderne du management à un profond respect de l'héritage culturel, il œuvre pour que la voix de sa mère continue de résonner à travers le monde, assurant la pérennité de son art pour les générations futures.
+                  </p>
+                </CardContent>
               </Card>
             </div>
           </div>
@@ -203,8 +203,8 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-2xl font-headline font-bold tracking-tighter sm:text-3xl">Vidéos &amp; Clips</h2>
-                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Vidéos &amp; Clips</h2>
+                <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
                   Découvrez les derniers clips et performances live.
                 </p>
               </div>
