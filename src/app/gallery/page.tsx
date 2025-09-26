@@ -8,6 +8,8 @@ import {
   Dialog,
   DialogContent,
   DialogTrigger,
+  DialogTitle,
+  DialogHeader,
 } from "@/components/ui/dialog"
 import { useState } from 'react';
 
@@ -53,6 +55,9 @@ export default function GalleryPage() {
         </div>
         {selectedImage && (
              <DialogContent className="max-w-3xl p-0 border-0">
+                <DialogHeader>
+                  <DialogTitle className="sr-only">{selectedImage.description}</DialogTitle>
+                </DialogHeader>
                 <div className="relative aspect-video">
                     <Image
                         src={selectedImage.imageUrl}
