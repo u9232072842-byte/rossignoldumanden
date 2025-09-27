@@ -122,8 +122,8 @@ export default function Home() {
             </div>
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-1 md:gap-12 lg:max-w-none lg:grid-cols-1 mt-12">
               <Card className="w-full max-w-4xl mx-auto overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="md:grid md:grid-cols-5">
-                  <div className="md:col-span-2 relative h-96 md:h-auto bg-black p-4">
+                <div className="grid md:grid-cols-3">
+                   <div className="md:col-span-1 relative aspect-[9/16] bg-black p-2">
                     {eventImage && (
                       <Image
                         src={eventImage.imageUrl}
@@ -133,7 +133,7 @@ export default function Home() {
                       />
                     )}
                   </div>
-                  <div className="md:col-span-3 flex flex-col">
+                  <div className="md:col-span-2 flex flex-col">
                     <CardHeader>
                       <Badge variant="default" className="w-fit bg-accent text-accent-foreground mb-2">Événement en vedette</Badge>
                       <CardTitle className="font-headline text-2xl">Célébration du 30ème anniversaire</CardTitle>
