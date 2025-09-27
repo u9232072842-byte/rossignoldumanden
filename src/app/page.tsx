@@ -75,7 +75,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="about" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
+        <section id="about" className="w-full py-10 md:py-16 bg-secondary/50">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <Card className="shadow-xl text-center lg:text-left">
@@ -94,7 +94,7 @@ export default function Home() {
                 </CardContent>
               </Card>
               <div className="flex items-center justify-center">
-                <div className="relative p-2 rounded-lg shadow-2xl bg-card">
+                <div className="relative p-2 rounded-lg bg-card shadow-2xl transition-transform duration-300 hover:scale-105 hover:rotate-[-2deg]">
                   {aboutImage && (
                     <Image
                       src={aboutImage.imageUrl}
@@ -110,7 +110,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="events" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="events" className="w-full py-10 md:py-16">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
@@ -137,12 +137,12 @@ export default function Home() {
                     <CardHeader>
                       <Badge variant="default" className="w-fit bg-accent text-accent-foreground mb-2">Événement en vedette</Badge>
                       <CardTitle className="font-headline text-2xl">Célébration du 30ème anniversaire</CardTitle>
-                      <CardDescription className="text-lg">Une soirée exclusive pour célébrer l'héritage de Djessou Mama Diabate.</CardDescription>
+                      <CardDescription className="text-lg">Ce projet est le symbole d’une grande diversité musicale. Rejoignez Djessou Mama Diabate pour une nuit inoubliable.</CardDescription>
                     </CardHeader>
                     <CardContent className="space-y-4 flex-grow">
                       <div className="flex items-center gap-2">
                         <Calendar className="w-5 h-5 text-muted-foreground" />
-                        <span className="font-medium">8 novembre 2025</span>
+                        <span className="font-medium">8 novembre 2025 - 20h00</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <MapPin className="w-5 h-5 text-muted-foreground" />
@@ -163,11 +163,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="manager" className="w-full py-12 md:py-24 lg:py-32 bg-secondary/50">
+        <section id="manager" className="w-full py-10 md:py-16 bg-secondary/50">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="flex items-center justify-center order-last lg:order-first">
-                <div className="relative p-2 rounded-lg shadow-2xl bg-card">
+                 <div className="relative p-2 rounded-lg bg-card shadow-2xl transition-transform duration-300 hover:scale-105 hover:rotate-2">
                   {managerImage && (
                     <Image
                       src={managerImage.imageUrl}
@@ -199,7 +199,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="media" className="w-full py-12 md:py-24 lg:py-32">
+        <section id="media" className="w-full py-10 md:py-16">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
