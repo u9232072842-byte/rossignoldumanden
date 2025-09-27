@@ -18,7 +18,7 @@ export default function EventDetailPage() {
   const [purchaseStep, setPurchaseStep] = useState('details'); // details, payment, confirmation
   const ticketRef = useRef(null);
 
-  const ticketPrice = 75;
+  const ticketPrice = 25;
 
   const handleTicketChange = (amount: number) => {
     setTicketCount((prev) => Math.max(1, prev + amount));
@@ -46,7 +46,7 @@ export default function EventDetailPage() {
           <>
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">Prix du billet</span>
-              <span className="font-bold">${ticketPrice}.00</span>
+              <span className="font-bold">{ticketPrice.toFixed(2)} €</span>
             </div>
             <div className="flex items-center justify-between">
               <span className="text-muted-foreground">Quantité</span>
@@ -63,7 +63,7 @@ export default function EventDetailPage() {
             <Separator />
             <div className="flex items-center justify-between text-xl">
               <span className="font-headline">Total</span>
-              <span className="font-bold">${ticketPrice * ticketCount}.00</span>
+              <span className="font-bold">{(ticketPrice * ticketCount).toFixed(2)} €</span>
             </div>
             <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => setPurchaseStep('payment')}>
               Procéder au paiement <CreditCard className="ml-2 h-4 w-4" />
