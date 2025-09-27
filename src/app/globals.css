@@ -4,33 +4,35 @@
 
 @layer base {
   :root {
-    --background: 48 83% 95%; /* Beige sable clair */
+    --background: 48 83% 95%; /* Beige sable clair (Savane) */
     --foreground: 24 90% 15%; /* Texte brun foncé */
 
-    --card: 48 83% 95%;
-    --card-foreground: 24 90% 15%;
+    /* Nuances métalliques/chromées pour les cartes et sections */
+    --card: 210 20% 95%; /* Gris argenté très clair */
+    --card-foreground: 210 10% 23%;
 
-    --popover: 48 83% 95%;
-    --popover-foreground: 24 90% 15%;
+    --popover: 210 20% 95%;
+    --popover-foreground: 210 10% 23%;
 
     --primary: 32 89% 50%; /* Orange savane */
     --primary-foreground: 24 90% 10%; /* Texte brun sur orange */
+    
+    /* Section secondaire avec une teinte métallique */
+    --secondary: 210 20% 90%; /* Gris argenté un peu plus foncé */
+    --secondary-foreground: 210 10% 15%;
 
-    --secondary: 48 50% 90%;
-    --secondary-foreground: 24 90% 20%;
+    --muted: 210 20% 90%;
+    --muted-foreground: 210 10% 40%;
 
-    --muted: 48 50% 90%;
-    --muted-foreground: 24 90% 40%;
-
-    --accent: 48 100% 50%; /* Jaune soleil vif */
+    --accent: 48 100% 50%; /* Jaune soleil vif (Savane) */
     --accent-foreground: 24 90% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 48 30% 85%;
-    --input: 48 30% 85%;
-    --ring: 32 89% 50%;
+    --border: 210 10% 80%; /* Bordure métallique */
+    --input: 210 10% 80%;
+    --ring: 32 89% 50%; /* Orange Savane pour le focus */
     
     --chart-1: 32 89% 50%;
     --chart-2: 48 100% 50%;
@@ -42,32 +44,33 @@
   }
 
   .dark {
-    --background: 24 90% 10%;
-    --foreground: 48 83% 95%;
+    --background: 240 10% 10%; /* Fond sombre, presque noir */
+    --foreground: 210 20% 95%; /* Texte clair */
 
-    --card: 24 90% 10%;
-    --card-foreground: 48 83% 95%;
+    /* Cartes sombres métalliques */
+    --card: 240 5% 12%;
+    --card-foreground: 210 20% 95%;
 
-    --popover: 24 90% 10%;
-    --popover-foreground: 48 83% 95%;
+    --popover: 240 5% 12%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 32 89% 50%;
+    --primary: 32 89% 50%; /* Orange savane */
     --primary-foreground: 24 90% 10%;
 
-    --secondary: 24 90% 15%;
-    --secondary-foreground: 48 83% 95%;
+    --secondary: 240 5% 18%;
+    --secondary-foreground: 210 20% 95%;
 
-    --muted: 24 90% 15%;
-    --muted-foreground: 48 50% 90%;
+    --muted: 240 5% 18%;
+    --muted-foreground: 210 10% 70%;
 
-    --accent: 48 100% 50%;
+    --accent: 48 100% 50%; /* Jaune soleil vif */
     --accent-foreground: 24 90% 10%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
     
-    --border: 24 90% 20%;
-    --input: 24 90% 20%;
+    --border: 240 5% 25%;
+    --input: 240 5% 25%;
     --ring: 32 89% 50%;
     
     --chart-1: 32 80% 55%;
