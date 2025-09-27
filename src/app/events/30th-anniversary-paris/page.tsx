@@ -117,13 +117,13 @@ export default function EventDetailPage() {
     <div className="container py-12 md:py-24">
       <div className="grid md:grid-cols-2 gap-8 lg:gap-16 max-w-6xl mx-auto">
         <div>
-          <div className="relative aspect-[9/16] w-full max-w-md mx-auto overflow-hidden rounded-lg shadow-lg">
+          <div className="relative aspect-[9/16] w-full max-w-md mx-auto overflow-hidden rounded-lg shadow-lg bg-black p-2">
             {eventImage && (
               <Image
                 src={eventImage.imageUrl}
                 alt={eventImage.description}
                 fill
-                className="object-cover object-top"
+                className="object-contain"
               />
             )}
           </div>

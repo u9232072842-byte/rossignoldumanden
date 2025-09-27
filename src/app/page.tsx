@@ -123,13 +123,13 @@ export default function Home() {
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-1 md:gap-12 lg:max-w-none lg:grid-cols-1 mt-12">
               <Card className="w-full max-w-4xl mx-auto overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <div className="md:grid md:grid-cols-3">
-                  <div className="md:col-span-1 relative h-96 md:h-auto">
+                  <div className="md:col-span-1 relative h-96 md:h-auto bg-black p-4">
                     {eventImage && (
                       <Image
                         src={eventImage.imageUrl}
                         alt={eventImage.description}
                         fill
-                        className="object-cover object-top"
+                        className="object-contain"
                       />
                     )}
                   </div>
@@ -146,7 +146,7 @@ export default function Home() {
                       </div>
                       <div className="flex items-center gap-2">
                         <MapPin className="w-5 h-5 text-muted-foreground" />
-                        <span className="font-medium">Romainville, France</span>
+                        <span className="font-medium">3 rue de la Pointe, 93230 Romainville</span>
                       </div>
                     </CardContent>
                     <CardFooter>
