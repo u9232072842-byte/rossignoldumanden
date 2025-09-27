@@ -8,7 +8,12 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    // Keeping this empty as we are using local images from /public
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+      },
+    ],
   },
 };
 
