@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Calendar, MapPin, Ticket, CreditCard, Minus, Plus, Download } from 'lucide-react';
+import { Calendar, MapPin, Ticket, CreditCard, Minus, Plus, Download, Clock } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import TicketComponent from '@/components/ticket';
 import jsPDF from 'jspdf';
@@ -18,7 +18,11 @@ export default function EventDetailPage() {
   const [purchaseStep, setPurchaseStep] = useState('details'); // details, payment, confirmation
   const ticketRef = useRef(null);
 
-  const ticketPrice = 25;
+  const ticketPrice = 25.00;
+  const eventDate = "8 novembre 2025";
+  const eventTime = "20h00";
+  const eventLocation = "3 rue de la Pointe, 93230 Romainville";
+
 
   const handleTicketChange = (amount: number) => {
     setTicketCount((prev) => Math.max(1, prev + amount));
@@ -96,8 +100,8 @@ export default function EventDetailPage() {
                 ref={ticketRef}
                 ticketId={ticketId}
                 eventName="Célébration du 30ème anniversaire"
-                eventDate="8 novembre 2025"
-                eventLocation="Grand Rex, Paris, France"
+                eventDate={`${eventDate} - ${eventTime}`}
+                eventLocation={eventLocation}
                 quantity={ticketCount}
               />
             </div>
@@ -126,16 +130,20 @@ export default function EventDetailPage() {
           <div className="mt-8">
             <h1 className="font-headline text-4xl font-bold">Célébration du 30ème anniversaire</h1>
             <p className="mt-4 text-lg text-muted-foreground">
-              Un concert unique pour célébrer trois décennies de génie musical. Rejoignez Djessou Mama Diabate pour une nuit inoubliable au cœur de Paris.
+              Ce projet est le symbole d’une grande diversité musicale. Rejoignez Djessou Mama Diabate pour une nuit inoubliable.
             </p>
             <div className="mt-6 space-y-3">
               <div className="flex items-center gap-3">
                 <Calendar className="w-5 h-5 text-primary" />
-                <span className="font-medium">8 novembre 2025</span>
+                <span className="font-medium">{eventDate}</span>
+              </div>
+               <div className="flex items-center gap-3">
+                <Clock className="w-5 h-5 text-primary" />
+                <span className="font-medium">{eventTime}</span>
               </div>
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-primary" />
-                <span className="font-medium">Grand Rex, Paris, France</span>
+                <span className="font-medium">{eventLocation}</span>
               </div>
             </div>
           </div>
