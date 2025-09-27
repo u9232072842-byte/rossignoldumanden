@@ -13,7 +13,7 @@ import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
 export default function EventDetailPage() {
-  const eventImage = PlaceHolderImages.find((p) => p.id === 'event-paris');
+  const eventImage = PlaceHolderImages.find((p) => p.id === 'event-paris-flyer');
   const [ticketCount, setTicketCount] = useState(1);
   const [purchaseStep, setPurchaseStep] = useState('details'); // details, payment, confirmation
   const ticketRef = useRef(null);
@@ -113,14 +113,13 @@ export default function EventDetailPage() {
     <div className="container py-12 md:py-24">
       <div className="grid md:grid-cols-2 gap-8 lg:gap-16 max-w-6xl mx-auto">
         <div>
-          <div className="relative aspect-video w-full overflow-hidden rounded-lg shadow-lg">
+          <div className="relative aspect-[9/16] w-full max-w-md mx-auto overflow-hidden rounded-lg shadow-lg">
             {eventImage && (
               <Image
                 src={eventImage.imageUrl}
                 alt={eventImage.description}
-                width={800}
-                height={450}
-                className="object-cover"
+                fill
+                className="object-cover object-top"
               />
             )}
           </div>

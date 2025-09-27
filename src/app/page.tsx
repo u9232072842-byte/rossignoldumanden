@@ -14,7 +14,7 @@ import * as React from 'react';
 
 export default function Home() {
   const heroImages = PlaceHolderImages.filter(p => p.id.startsWith('hero-'));
-  const eventImage = PlaceHolderImages.find(p => p.id === 'event-paris');
+  const eventImage = PlaceHolderImages.find(p => p.id === 'event-paris-flyer');
   const aboutImage = PlaceHolderImages.find(p => p.id === 'about-portrait');
   const managerImage = PlaceHolderImages.find(p => p.id === 'manager-portrait');
 
@@ -122,18 +122,18 @@ export default function Home() {
             </div>
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-1 md:gap-12 lg:max-w-none lg:grid-cols-1 mt-12">
               <Card className="w-full max-w-4xl mx-auto overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="md:flex">
-                  <div className="md:w-1/2 relative h-64 md:h-auto">
+                <div className="md:grid md:grid-cols-3">
+                  <div className="md:col-span-1 relative h-96 md:h-auto">
                     {eventImage && (
                       <Image
                         src={eventImage.imageUrl}
                         alt={eventImage.description}
                         fill
-                        className="object-cover"
+                        className="object-cover object-top"
                       />
                     )}
                   </div>
-                  <div className="md:w-1/2 flex flex-col">
+                  <div className="md:col-span-2 flex flex-col">
                     <CardHeader>
                       <Badge variant="default" className="w-fit bg-accent text-accent-foreground mb-2">Événement en vedette</Badge>
                       <CardTitle className="font-headline text-2xl">Célébration du 30ème anniversaire</CardTitle>
@@ -216,7 +216,6 @@ export default function Home() {
                     <iframe
                       src={`https://www.youtube.com/embed/${video.id}`}
                       title={video.title}
-                      frameBorder="0"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                       className="absolute top-0 left-0 w-full h-full"
