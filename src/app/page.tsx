@@ -14,7 +14,7 @@ import * as React from 'react';
 
 export default function Home() {
   const heroImages = PlaceHolderImages.filter(p => p.id.startsWith('hero-'));
-  const eventImage = PlaceHolderImages.find(p => p.id === 'event-paris');
+  const eventImage = PlaceHolderImages.find(p => p.id === 'event-paris-flyer');
   const aboutImage = PlaceHolderImages.find(p => p.id === 'about-portrait');
   const managerImage = PlaceHolderImages.find(p => p.id === 'manager-portrait');
 
@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="relative w-full h-[90vh] md:h-[90vh] bg-gradient-to-br from-primary/70 via-accent/50 to-background">
+        <section className="relative w-full h-[90vh] md:h-[90vh]">
           <Carousel
             className="w-full h-full"
             plugins={[plugin.current]}
