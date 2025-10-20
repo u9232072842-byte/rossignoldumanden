@@ -9,10 +9,9 @@ export default {
   ],
   theme: {
     extend: {
-      fontFamily: {
+       fontFamily: {
         body: ['"PT Sans"', 'sans-serif'],
         headline: ['"Playfair Display"', 'serif'],
-        code: ['monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -60,6 +59,7 @@ export default {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
+        xl: 'calc(var(--radius) + 4px)',
       },
       keyframes: {
         'accordion-down': {
@@ -78,10 +78,30 @@ export default {
             height: '0',
           },
         },
+        "shine": {
+          "from": {
+            "backgroundPosition": "200% 0",
+          },
+          "to": {
+            "backgroundPosition": "-200% 0",
+          },
+        },
+        "slide-in": {
+          "from": {
+            "opacity": "0",
+            "transform": "translateY(20px)",
+          },
+          "to": {
+            "opacity": "1",
+            "transform": "translateY(0)",
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        "shine": "shine 5s linear infinite",
+        "slide-in": "slide-in 0.5s ease-out forwards",
       },
     },
   },

@@ -58,29 +58,29 @@ export default function Home() {
               ))}
             </CarouselContent>
           </Carousel>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-4 pb-20 md:pb-24">
-            <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-foreground">
+            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-accent animate-shine">
               Djessou Mama Diabate
             </h1>
             <p className="mt-2 text-lg md:text-xl text-foreground/90 font-medium">Le Rossignol du Manding</p>
             <p className="mt-4 max-w-2xl text-md md:text-lg text-foreground/80">
               Célébrant 30 ans de la voix d'or. Vivez l'héritage, la musique, l'âme.
             </p>
-            <div className="mt-6">
-              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            <div className="mt-8">
+              <Button asChild size="lg" className="text-lg">
                 <Link href="#events">Voir l'événement à venir</Link>
               </Button>
             </div>
           </div>
         </section>
 
-        <section id="about" className="w-full py-10 md:py-16 bg-secondary/50">
+        <section id="about" className="w-full py-16 md:py-24 bg-card/50">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
-              <Card className="shadow-xl text-center lg:text-left">
+              <Card className="shadow-2xl text-center lg:text-left p-4 bg-card/80 border-accent/20">
                 <CardHeader>
-                  <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">
+                  <CardTitle className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
                     La Voix d'une Génération
                   </CardTitle>
                 </CardHeader>
@@ -94,7 +94,7 @@ export default function Home() {
                 </CardContent>
               </Card>
               <div className="flex items-center justify-center">
-                <div className="relative p-2 rounded-lg bg-card shadow-2xl transition-transform duration-300 hover:scale-105 hover:rotate-[-2deg]">
+                <div className="relative p-2 rounded-xl bg-card shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-[-3deg] glowing-border">
                   {aboutImage && (
                     <Image
                       src={aboutImage.imageUrl}
@@ -110,20 +110,21 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="events" className="w-full py-10 md:py-16">
+        <section id="events" className="w-full py-16 md:py-24">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Événements à venir</h2>
+                <Badge variant="outline" className="text-primary border-primary/50">Événement unique</Badge>
+                <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">Événements à venir</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
                   Rejoignez-nous pour des nuits inoubliables de musique et de célébration.
                 </p>
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-1 md:gap-12 lg:max-w-none lg:grid-cols-1 mt-12">
-              <Card className="w-full max-w-4xl mx-auto overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="grid md:grid-cols-3">
-                   <div className="md:col-span-1 relative aspect-[9/16] bg-black p-2">
+              <Card className="w-full max-w-5xl mx-auto overflow-hidden shadow-2xl hover:shadow-primary/20 transition-shadow duration-300 border-border/50">
+                <div className="grid md:grid-cols-2">
+                   <div className="md:col-span-1 relative min-h-[400px] md:min-h-0 md:aspect-[9/16] bg-black p-2">
                     {eventImage && (
                       <Image
                         src={eventImage.imageUrl}
@@ -133,24 +134,24 @@ export default function Home() {
                       />
                     )}
                   </div>
-                  <div className="md:col-span-2 flex flex-col">
-                    <CardHeader>
-                      <Badge variant="default" className="w-fit bg-accent text-accent-foreground mb-2">Événement en vedette</Badge>
-                      <CardTitle className="font-headline text-2xl">Célébration du 30ème anniversaire</CardTitle>
-                      <CardDescription className="text-lg">Ce projet est le symbole d’une grande diversité musicale. Rejoignez Djessou Mama Diabate pour une nuit inoubliable.</CardDescription>
+                  <div className="md:col-span-1 flex flex-col p-6 md:p-8">
+                    <CardHeader className="p-0">
+                      <Badge variant="default" className="w-fit bg-primary mb-4 text-primary-foreground">Événement en vedette</Badge>
+                      <CardTitle className="font-headline text-3xl">Célébration du 30ème anniversaire</CardTitle>
+                      <CardDescription className="text-lg text-muted-foreground mt-2">Ce projet est le symbole d’une grande diversité musicale. Rejoignez Djessou Mama Diabate pour une nuit inoubliable.</CardDescription>
                     </CardHeader>
-                    <CardContent className="space-y-4 flex-grow">
-                      <div className="flex items-center gap-2">
-                        <Calendar className="w-5 h-5 text-muted-foreground" />
-                        <span className="font-medium">8 novembre 2025 - 20h00</span>
+                    <CardContent className="space-y-4 flex-grow my-8 p-0">
+                      <div className="flex items-center gap-4">
+                        <Calendar className="w-6 h-6 text-primary" />
+                        <span className="font-medium text-lg">8 novembre 2025 - 20h00</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-5 h-5 text-muted-foreground" />
-                        <span className="font-medium">3 rue de la Pointe, 93230 Romainville</span>
+                      <div className="flex items-center gap-4">
+                        <MapPin className="w-6 h-6 text-primary" />
+                        <span className="font-medium text-lg">3 rue de la Pointe, 93230 Romainville</span>
                       </div>
                     </CardContent>
-                    <CardFooter>
-                      <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
+                    <CardFooter className="p-0">
+                      <Button asChild size="lg" className="w-full text-lg">
                         <Link href="/events/30th-anniversary-paris">
                           Acheter des billets <ArrowRight className="ml-2 h-4 w-4" />
                         </Link>
@@ -163,11 +164,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="manager" className="w-full py-10 md:py-16 bg-secondary/50">
+        <section id="manager" className="w-full py-16 md:py-24 bg-card/50">
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="flex items-center justify-center order-last lg:order-first">
-                 <div className="relative p-2 rounded-lg bg-card shadow-2xl transition-transform duration-300 hover:scale-105 hover:rotate-2">
+                 <div className="relative p-2 rounded-xl bg-card shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-[3deg] glowing-border">
                   {managerImage && (
                     <Image
                       src={managerImage.imageUrl}
@@ -179,9 +180,9 @@ export default function Home() {
                   )}
                 </div>
               </div>
-              <Card className="shadow-xl text-center lg:text-left">
+              <Card className="shadow-2xl text-center lg:text-left p-4 bg-card/80 border-accent/20">
                 <CardHeader>
-                  <CardTitle className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">
+                  <CardTitle className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">
                     Management
                   </CardTitle>
                   <CardDescription className="text-xl">Diabaté Bangaly Fodé</CardDescription>
@@ -199,11 +200,12 @@ export default function Home() {
           </div>
         </section>
 
-        <section id="media" className="w-full py-10 md:py-16">
+        <section id="media" className="w-full py-16 md:py-24">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center justify-center space-y-4 text-center">
               <div className="space-y-2">
-                <h2 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl">Vidéos &amp; Clips</h2>
+                 <Badge variant="outline" className="text-primary border-primary/50">Contenu Exclusif</Badge>
+                <h2 className="text-4xl font-headline font-bold tracking-tighter sm:text-5xl">Vidéos &amp; Clips</h2>
                 <p className="max-w-[900px] text-muted-foreground md:text-xl/relaxed">
                   Découvrez les derniers clips et performances live.
                 </p>
@@ -211,7 +213,7 @@ export default function Home() {
             </div>
             <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-1 md:grid-cols-2 lg:gap-12 mt-12">
               {videos.map((video) => (
-                <Card key={video.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <Card key={video.id} className="overflow-hidden shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 glowing-border">
                   <div className="aspect-video relative">
                     <iframe
                       src={`https://www.youtube.com/embed/${video.id}`}

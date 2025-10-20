@@ -4,80 +4,77 @@
 
 @layer base {
   :root {
-    --background: 48 83% 95%; /* Beige sable clair (Savane) */
-    --foreground: 24 90% 15%; /* Texte brun foncé */
+    --background: 222 83% 4%; /* Bleu nuit très sombre */
+    --foreground: 210 40% 98%; /* Texte presque blanc */
 
-    /* Nuances métalliques/chromées pour les cartes et sections */
-    --card: 210 20% 95%; /* Gris argenté très clair */
-    --card-foreground: 210 10% 23%;
+    --card: 222 83% 8%; /* Cartes bleu nuit légèrement plus clair */
+    --card-foreground: 210 40% 98%;
 
-    --popover: 210 20% 95%;
-    --popover-foreground: 210 10% 23%;
+    --popover: 222 83% 4%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 32 89% 50%; /* Orange savane */
-    --primary-foreground: 24 90% 10%; /* Texte brun sur orange */
+    --primary: 28 92% 55%; /* Orange vif du logo */
+    --primary-foreground: 24 90% 10%; /* Texte sombre sur orange */
     
-    /* Section secondaire avec une teinte métallique */
-    --secondary: 210 20% 90%; /* Gris argenté un peu plus foncé */
-    --secondary-foreground: 210 10% 15%;
+    --secondary: 262 60% 30%; /* Violet/mauve de la tenue */
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 20% 90%;
-    --muted-foreground: 210 10% 40%;
+    --muted: 222 83% 12%;
+    --muted-foreground: 222 40% 60%;
 
-    --accent: 48 100% 50%; /* Jaune soleil vif (Savane) */
-    --accent-foreground: 24 90% 10%;
+    --accent: 262 70% 50%; /* Violet plus vif pour l'accentuation */
+    --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 210 10% 80%; /* Bordure métallique */
-    --input: 210 10% 80%;
-    --ring: 32 89% 50%; /* Orange Savane pour le focus */
+    --border: 222 83% 15%;
+    --input: 222 83% 15%;
+    --ring: 28 92% 60%;
     
-    --chart-1: 32 89% 50%;
-    --chart-2: 48 100% 50%;
-    --chart-3: 24 80% 55%;
-    --chart-4: 32 70% 60%;
-    --chart-5: 48 90% 60%;
+    --chart-1: 28 92% 55%;
+    --chart-2: 262 70% 50%;
+    --chart-3: 28 92% 75%;
+    --chart-4: 262 70% 70%;
+    --chart-5: 28 92% 45%;
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 240 10% 10%; /* Fond sombre, presque noir */
-    --foreground: 210 20% 95%; /* Texte clair */
+     --background: 222 83% 4%; /* Bleu nuit très sombre */
+    --foreground: 210 40% 98%; /* Texte presque blanc */
 
-    /* Cartes sombres métalliques */
-    --card: 240 5% 12%;
-    --card-foreground: 210 20% 95%;
+    --card: 222 83% 8%; /* Cartes bleu nuit légèrement plus clair */
+    --card-foreground: 210 40% 98%;
 
-    --popover: 240 5% 12%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 222 83% 4%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 32 89% 50%; /* Orange savane */
-    --primary-foreground: 24 90% 10%;
-
-    --secondary: 240 5% 18%;
-    --secondary-foreground: 210 20% 95%;
-
-    --muted: 240 5% 18%;
-    --muted-foreground: 210 10% 70%;
-
-    --accent: 48 100% 50%; /* Jaune soleil vif */
-    --accent-foreground: 24 90% 10%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --primary: 28 92% 55%; /* Orange vif du logo */
+    --primary-foreground: 24 90% 10%; /* Texte sombre sur orange */
     
-    --border: 240 5% 25%;
-    --input: 240 5% 25%;
-    --ring: 32 89% 50%;
+    --secondary: 262 60% 30%; /* Violet/mauve de la tenue */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 222 83% 12%;
+    --muted-foreground: 222 40% 60%;
+
+    --accent: 262 70% 50%; /* Violet plus vif pour l'accentuation */
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 222 83% 15%;
+    --input: 222 83% 15%;
+    --ring: 28 92% 60%;
     
-    --chart-1: 32 80% 55%;
-    --chart-2: 48 90% 60%;
-    --chart-3: 24 70% 65%;
-    --chart-4: 32 60% 50%;
-    --chart-5: 48 80% 50%;
+    --chart-1: 28 92% 55%;
+    --chart-2: 262 70% 50%;
+    --chart-3: 28 92% 75%;
+    --chart-4: 262 70% 70%;
+    --chart-5: 28 92% 45%;
   }
 }
 
@@ -87,5 +84,34 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .glowing-border {
+    @apply rounded-lg shadow-lg;
+    position: relative;
+    overflow: hidden;
+  }
+  .glowing-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 2px;
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+  }
+  .glowing-border:hover::before {
+    opacity: 1;
   }
 }

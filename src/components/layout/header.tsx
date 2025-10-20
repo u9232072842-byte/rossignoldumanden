@@ -42,7 +42,7 @@ export default function Header() {
     if (loading) {
       return (
         <Button variant="ghost" size="icon" disabled>
-          <Loader2 className="h-5 w-5 animate-spin" />
+          <Loader2 className="h-5 w-5 animate-spin text-primary" />
           <span className="sr-only">Chargement...</span>
         </Button>
       );
@@ -52,7 +52,7 @@ export default function Header() {
       return (
         <Button variant="ghost" size="icon" asChild>
           <Link href="/login">
-            <User className="h-5 w-5" />
+            <User className="h-5 w-5 hover:text-primary transition-colors" />
             <span className="sr-only">Profil</span>
           </Link>
         </Button>
@@ -62,8 +62,8 @@ export default function Header() {
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="icon">
-            <User className="h-5 w-5" />
+          <Button variant="ghost" size="icon" className="hover:bg-muted">
+            <User className="h-5 w-5 text-primary" />
             <span className="sr-only">Profil</span>
           </Button>
         </DropdownMenuTrigger>
@@ -73,7 +73,7 @@ export default function Header() {
             <p className="text-xs text-muted-foreground font-normal">{user.email}</p>
           </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem onClick={handleSignOut}>
+          <DropdownMenuItem onClick={handleSignOut} className="cursor-pointer">
             <LogOut className="mr-2 h-4 w-4" />
             <span>Déconnexion</span>
           </DropdownMenuItem>
@@ -83,8 +83,8 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-lg">
+      <div className="container flex h-20 items-center">
         <div className="flex items-center md:hidden">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
             <SheetTrigger asChild>
@@ -93,24 +93,24 @@ export default function Header() {
                 <span className="sr-only">Ouvrir le menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
-              <div className="flex flex-col space-y-4">
-                <Link href="/" className="mr-6 flex items-center space-x-2" onClick={() => setIsSheetOpen(false)}>
-                  <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-full" />
-                  <span className="font-headline text-xl font-bold tracking-tighter">
-                    Djessou Mama Diabate
+            <SheetContent side="left" className="bg-background/95">
+              <div className="flex flex-col space-y-6">
+                <Link href="/" className="mr-6 flex items-center space-x-3" onClick={() => setIsSheetOpen(false)}>
+                  <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-full border-2 border-primary/50" />
+                  <span className="font-headline text-lg font-bold tracking-tighter">
+                    Djessou Mama
                   </span>
                 </Link>
-                <nav className="flex flex-col space-y-2">
+                <nav className="flex flex-col space-y-3">
                   {navLinks.map(link => {
                     const LinkIcon = link.icon;
                     return (
                       <SheetClose key={link.href} asChild>
                         <Link
                           href={link.href}
-                          className="flex items-center gap-3 rounded-lg px-3 py-2 text-lg text-muted-foreground transition-colors hover:text-foreground"
+                          className="flex items-center gap-4 rounded-lg px-3 py-3 text-lg text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
                         >
-                          <LinkIcon className="h-5 w-5" />
+                          <LinkIcon className="h-5 w-5 text-primary" />
                           {link.label}
                         </Link>
                       </SheetClose>
@@ -122,18 +122,18 @@ export default function Header() {
           </Sheet>
         </div>
         <div className="flex flex-1 items-center justify-start md:justify-start">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <Image src="/images/logo.png" alt="Logo" width={40} height={40} className="rounded-full" />
+          <Link href="/" className="mr-6 flex items-center space-x-3 group">
+            <Image src="/images/logo.png" alt="Logo" width={50} height={50} className="rounded-full transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 border-2 border-primary/30" />
             <span className="hidden sm:inline-block font-headline text-2xl font-bold tracking-tighter">
               Djessou Mama Diabate
             </span>
           </Link>
-          <nav className="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <nav className="hidden md:flex items-center gap-1">
             {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
+                className="px-4 py-2 rounded-md transition-colors hover:bg-muted text-muted-foreground hover:text-foreground text-sm font-medium"
               >
                 {link.label}
               </Link>
