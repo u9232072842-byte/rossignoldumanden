@@ -9,14 +9,8 @@
     {
       "id": "about-portrait",
       "description": "A portrait of Djessou Manding for the about section",
-      "imageUrl": "/images/manager-portrait.png",
+      "imageUrl": "/images/gallery-5.png",
       "imageHint": "musician portrait"
-    },
-    {
-      "id": "hero-guitar",
-      "description": "Djessou Manding playing guitar on stage",
-      "imageUrl": "/images/hero-guitar.png",
-      "imageHint": "musician guitar"
     },
     {
       "id": "hero-crowd",
