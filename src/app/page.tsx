@@ -124,13 +124,14 @@ export default function Home() {
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-1 md:gap-12 lg:max-w-none lg:grid-cols-1 mt-12">
               <Card className="w-full max-w-5xl mx-auto overflow-hidden shadow-2xl hover:shadow-primary/20 transition-shadow duration-300 border-border/50">
                 <div className="grid md:grid-cols-2">
-                   <div className="relative min-h-[400px] md:aspect-[4/5]">
+                   <div className="flex items-center justify-center p-4">
                     {eventImage && (
                       <Image
                         src={eventImage.imageUrl}
                         alt={eventImage.description}
-                        fill
-                        className="object-cover"
+                        width={600}
+                        height={800}
+                        className="rounded-lg object-cover aspect-[4/5]"
                       />
                     )}
                   </div>
@@ -168,14 +169,14 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="flex items-center justify-center order-last lg:order-first">
-                 <div className="relative p-2 rounded-xl bg-card shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-[3deg] glowing-border max-w-xs w-full">
+                 <div className="relative p-2 rounded-xl bg-card shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-[3deg] glowing-border">
                   {managerImage && (
                     <Image
                       src={managerImage.imageUrl}
                       alt={managerImage.description}
                       width={400}
                       height={500}
-                      className="rounded-lg object-cover aspect-[4/5] w-full"
+                      className="rounded-lg object-cover aspect-[4/5]"
                     />
                   )}
                 </div>
