@@ -169,16 +169,15 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="flex items-center justify-center order-last lg:order-first">
                  <div className="relative p-2 rounded-xl bg-card shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-[3deg] glowing-border">
-                  <div className="relative w-full max-w-[400px] aspect-[4/5]">
-                    {managerImage && (
-                        <Image
-                        src={managerImage.imageUrl}
-                        alt={managerImage.description}
-                        fill
-                        className="rounded-lg object-cover"
-                        />
-                    )}
-                  </div>
+                  {managerImage && (
+                      <Image
+                      src={managerImage.imageUrl}
+                      alt={managerImage.description}
+                      width={400}
+                      height={500}
+                      className="rounded-lg object-cover aspect-[4/5]"
+                      />
+                  )}
                 </div>
               </div>
               <Card className="shadow-2xl text-center lg:text-left p-4 bg-card/80 border-accent/20">
@@ -238,6 +237,8 @@ export default function Home() {
   );
 }
     
+    
+
     
 
     
