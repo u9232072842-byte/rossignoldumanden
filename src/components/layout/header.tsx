@@ -121,10 +121,10 @@ export default function Header() {
           </Sheet>
         </div>
         <div className="flex flex-1 items-center justify-start md:justify-start">
-          <Link href="/" className="mr-6 flex items-center space-x-3 group">
+          <Link href="/" className="mr-3 sm:mr-6 flex items-center space-x-2 sm:space-x-3 group">
             <Image src="/images/logo.png" alt="Logo" width={50} height={50} className="rounded-full transition-transform duration-300 group-hover:scale-110 group-hover:rotate-6 border-2 border-primary/30" />
-            <span className="hidden sm:inline-block font-headline text-2xl font-bold tracking-tighter">
-              Djessou Mama Diabate
+            <span className="text-xl sm:text-2xl font-headline font-bold tracking-tighter">
+              Djessou Mama
             </span>
           </Link>
           <nav className="hidden md:flex items-center gap-1">

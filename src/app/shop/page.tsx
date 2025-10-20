@@ -9,6 +9,7 @@ import { ArrowRight } from 'lucide-react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import type { Product } from '@/lib/types';
 import { getProducts } from '@/lib/products';
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area';
 
 export default function ShopPage() {
   const products: Product[] = getProducts();
@@ -71,11 +72,14 @@ export default function ShopPage() {
       
       <Tabs defaultValue="all" className="w-full">
         <div className="flex justify-center mb-8">
-          <TabsList>
-            {categories.map(cat => (
-              <TabsTrigger key={cat.value} value={cat.value}>{cat.label}</TabsTrigger>
-            ))}
-          </TabsList>
+          <ScrollArea className="w-full max-w-sm sm:max-w-md md:max-w-none whitespace-nowrap">
+            <TabsList className="inline-flex">
+              {categories.map(cat => (
+                <TabsTrigger key={cat.value} value={cat.value}>{cat.label}</TabsTrigger>
+              ))}
+            </TabsList>
+            <ScrollBar orientation="horizontal" />
+          </ScrollArea>
         </div>
         {categories.map(cat => (
           <TabsContent key={cat.value} value={cat.value}>

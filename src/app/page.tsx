@@ -211,7 +211,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl gap-8 sm:grid-cols-1 md:grid-cols-2 lg:gap-12 mt-12">
+            <div className="mx-auto grid max-w-5xl gap-8 grid-cols-1 sm:grid-cols-2 lg:gap-12 mt-12">
               {videos.slice(0, 4).map((video) => (
                 <Card key={video.id} className="overflow-hidden shadow-lg hover:shadow-primary/20 hover:-translate-y-1 transition-all duration-300 glowing-border">
                   <div className="aspect-video relative">

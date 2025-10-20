@@ -55,7 +55,7 @@ export default function GalleryPage() {
           ))}
         </div>
         {selectedImage && (
-             <DialogContent className="max-w-3xl p-0 border-0">
+             <DialogContent className="max-w-3xl w-[90vw] p-0 border-0">
                 <DialogHeader>
                   <DialogTitle className="sr-only">{selectedImage.description}</DialogTitle>
                    <DialogDescription className="sr-only">
