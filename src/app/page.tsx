@@ -45,7 +45,7 @@ export default function Home() {
             <CarouselContent>
               {heroImages.map((image) => (
                 <CarouselItem key={image.id}>
-                  <div className="relative h-[90vh] md:h-[90vh] bg-background">
+                  <div className="relative h-[90vh] md:h-[90vh] bg-gradient-to-br from-primary/70 via-accent/50 to-background">
                     <Image
                       src={image.imageUrl}
                       alt={image.description}
@@ -58,7 +58,7 @@ export default function Home() {
               ))}
             </CarouselContent>
           </Carousel>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-4 pb-20 md:pb-24">
             <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-accent animate-shine">
               Djessou Mama Diabate
