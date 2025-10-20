@@ -45,7 +45,7 @@ export default function Home() {
             <CarouselContent>
               {heroImages.map((image) => (
                 <CarouselItem key={image.id}>
-                  <div className="relative h-[90vh] md:h-[90vh] bg-gradient-to-br from-primary/70 via-accent/50 to-background">
+                  <div className="relative h-[90vh] md:h-[90vh]">
                     <Image
                       src={image.imageUrl}
                       alt={image.description}
@@ -242,3 +242,4 @@ export default function Home() {
     
 
     
+
