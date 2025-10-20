@@ -9,7 +9,7 @@
     {
       "id": "about-portrait",
       "description": "A portrait of Djessou Manding for the about section",
-      "imageUrl": "/images/gallery-5.png",
+      "imageUrl": "/images/manager-portrait.png",
       "imageHint": "musician portrait"
     },
     {
@@ -23,6 +23,12 @@
       "description": "Djessou Mama Diabate with her band in the background.",
       "imageUrl": "/images/gallery-5.png",
       "imageHint": "musician band"
+    },
+    {
+      "id": "hero-logo",
+      "description": "Djessou Mama Diabate Logo",
+      "imageUrl": "/images/logo.png",
+      "imageHint": "logo brand"
     },
     {
       "id": "event-paris",
