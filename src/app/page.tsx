@@ -35,7 +35,7 @@ export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <main className="flex-1">
-        <section className="relative w-full h-[calc(90vh-80px)] md:h-[calc(90vh-80px)]">
+        <section className="relative w-full h-[90vh] md:h-[90vh]">
           <Carousel
             className="w-full h-full"
             plugins={[plugin.current]}
@@ -45,7 +45,7 @@ export default function Home() {
             <CarouselContent>
               {heroImages.map((image) => (
                 <CarouselItem key={image.id}>
-                  <div className="relative h-[calc(90vh-80px)] md:h-[calc(90vh-80px)]">
+                  <div className="relative h-[90vh] md:h-[90vh]">
                     <Image
                       src={image.imageUrl}
                       alt={image.description}
@@ -236,5 +236,7 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
