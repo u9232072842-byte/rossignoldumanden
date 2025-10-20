@@ -60,7 +60,7 @@ export default function Home() {
           </Carousel>
           <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
            <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-4 pb-20 md:pb-24">
-            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8)' }}>
+             <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8)' }}>
               Djessou Mama Diabate
             </h1>
             <p className="mt-2 text-lg md:text-xl text-white font-medium" style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.6)' }}>Le Rossignol du Manding</p>
@@ -124,7 +124,7 @@ export default function Home() {
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-1 md:gap-12 lg:max-w-none lg:grid-cols-1 mt-12">
               <Card className="w-full max-w-5xl mx-auto overflow-hidden shadow-2xl hover:shadow-primary/20 transition-shadow duration-300 border-border/50">
                 <div className="grid md:grid-cols-2">
-                   <div className="md:col-span-1 relative min-h-[400px] md:min-h-0 md:aspect-video">
+                   <div className="md:col-span-1 relative min-h-[400px] md:min-h-0 md:aspect-[4/5]">
                     {eventImage && (
                       <Image
                         src={eventImage.imageUrl}
