@@ -59,12 +59,12 @@ export default function Home() {
             </CarouselContent>
           </Carousel>
           <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
-          <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-4 pb-20 md:pb-24">
-            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
+           <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-4 pb-20 md:pb-24">
+            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8)' }}>
               Djessou Mama Diabate
             </h1>
-            <p className="mt-2 text-lg md:text-xl text-white font-medium" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>Le Rossignol du Manding</p>
-            <p className="mt-4 max-w-2xl text-md md:text-lg text-white" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
+            <p className="mt-2 text-lg md:text-xl text-white font-medium" style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.6)' }}>Le Rossignol du Manding</p>
+            <p className="mt-4 max-w-2xl text-md md:text-lg text-white" style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.6)' }}>
               Célébrant 30 ans de la voix d'or. Vivez l'héritage, la musique, l'âme.
             </p>
             <div className="mt-8">
@@ -169,15 +169,16 @@ export default function Home() {
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="flex items-center justify-center order-last lg:order-first">
                  <div className="relative p-2 rounded-xl bg-card shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-[3deg] glowing-border">
-                  {managerImage && (
-                    <Image
-                      src={managerImage.imageUrl}
-                      alt={managerImage.description}
-                      width={400}
-                      height={500}
-                      className="rounded-lg object-cover aspect-[4/5]"
-                    />
-                  )}
+                  <div className="relative w-[400px] max-w-full aspect-[4/5]">
+                    {managerImage && (
+                        <Image
+                        src={managerImage.imageUrl}
+                        alt={managerImage.description}
+                        fill
+                        className="rounded-lg object-cover"
+                        />
+                    )}
+                  </div>
                 </div>
               </div>
               <Card className="shadow-2xl text-center lg:text-left p-4 bg-card/80 border-accent/20">
