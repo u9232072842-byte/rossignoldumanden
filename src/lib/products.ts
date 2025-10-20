@@ -65,7 +65,7 @@ const products: Product[] = [
     {
       id: 'poster',
       name: "Affiche de Concert Édition Limitée",
-      price: 25.00,
+      price: 2.00,
       description: "Affiche officielle du concert du 30ème anniversaire. Une œuvre d'art à encadrer pour immortaliser cet événement historique. Imprimée sur papier de haute qualité.",
       images: PlaceHolderImages.filter(p => p.id.startsWith('merch-poster-')),
       category: 'decoration',
