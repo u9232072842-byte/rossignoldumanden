@@ -45,7 +45,7 @@ export default function Home() {
             <CarouselContent>
               {heroImages.map((image) => (
                 <CarouselItem key={image.id}>
-                  <div className="relative h-[90vh] md:h-[90vh] bg-black">
+                  <div className="relative h-[90vh] md:h-[90vh] bg-background">
                     <Image
                       src={image.imageUrl}
                       alt={image.description}
@@ -236,6 +236,8 @@ export default function Home() {
     </div>
   );
 }
+
+    
 
     
 
