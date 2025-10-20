@@ -23,7 +23,7 @@ type ImagePlaceholder = {
 
 
 export default function GalleryPage() {
-  const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith('gallery-'));
+  const galleryImages = PlaceHolderImages.filter(p => p.id.startsWith('gallery-')).slice(0, 6);
   const [selectedImage, setSelectedImage] = useState<ImagePlaceholder | null>(null);
 
   return (
@@ -36,7 +36,7 @@ export default function GalleryPage() {
       </div>
 
       <Dialog>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-8">
           {galleryImages.map(image => (
             <DialogTrigger key={image.id} asChild onClick={() => setSelectedImage(image)}>
               <Card  className="overflow-hidden shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group">
