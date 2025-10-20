@@ -82,7 +82,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-lg">
+    <header className="w-full border-b border-border/50 bg-background">
       <div className="container flex h-20 items-center">
         <div className="flex items-center md:hidden">
           <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
