@@ -199,6 +199,12 @@
       "imageHint": "music art"
     },
     {
+      "id": "album-laguinee",
+      "description": "Album cover for La Guinée",
+      "imageUrl": "https://images.unsplash.com/photo-1759455409423-21c70d73274d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxhbGJ1bSUyMGNkfGVufDB8fHx8MTc2MDk4Nzg1N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "album cd"
+    },
+    {
       "id": "gallery-1",
       "description": "Djessou Mama Diabate performing on stage with a microphone.",
       "imageUrl": "/images/gallery-1.png",

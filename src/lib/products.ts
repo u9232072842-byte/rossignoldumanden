@@ -39,6 +39,14 @@ const products: Product[] = [
       }
     },
     {
+      id: 'album-la-guinee',
+      name: "CD Album 'La Guinée'",
+      price: 15.00,
+      description: "L'album 'La Guinée' en format CD. Une collection de chansons qui vous feront voyager au cœur du Manding.",
+      images: PlaceHolderImages.filter(p => p.id === 'album-laguinee'),
+      category: 'musique',
+    },
+    {
       id: 'tote',
       name: "Sac Tote Bag 'Rossignol du Manding'",
       price: 22.00,
@@ -59,3 +67,5 @@ const products: Product[] = [
 export function getProducts(): Product[] {
   return products;
 }
+
+    
