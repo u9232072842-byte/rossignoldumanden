@@ -16,7 +16,10 @@ export default function EventDetailPage() {
   const eventImage = PlaceHolderImages.find((p) => p.id === 'event-paris-flyer');
   const [ticketCount, setTicketCount] = useState(1);
   const [purchaseStep, setPurchaseStep] = useState('details'); // details, payment, confirmation
-  const ticketRef = useRef(null);
+  
+  // We'll now use an array of refs, one for each ticket
+  const ticketRefs = useRef<Array<HTMLDivElement | null>>([]);
+
 
   const ticketPrice = 25.00;
   const eventDate = "8 novembre 2025";
@@ -28,8 +31,7 @@ export default function EventDetailPage() {
     setTicketCount((prev) => Math.max(1, prev + amount));
   };
 
-  const handleDownloadPdf = async () => {
-    const element = ticketRef.current;
+  const handleDownloadPdf = async (element: HTMLElement | null, ticketId: string) => {
     if (!element) return;
 
     const canvas = await html2canvas(element, { scale: 2 });
@@ -40,7 +42,7 @@ export default function EventDetailPage() {
     const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
     
     pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('billet-djessou-mama-diabate.pdf');
+    pdf.save(`billet-${ticketId}.pdf`);
   };
 
   const renderStep = () => {
@@ -90,24 +92,36 @@ export default function EventDetailPage() {
             </>
         );
       case 'confirmation':
-        const ticketId = `DMD-30ANS-${Date.now()}`;
+        const baseTicketId = `DMD-30ANS-${Date.now()}`;
         return (
           <div className="text-center">
             <h3 className="font-headline text-2xl mb-2">Achat confirmé !</h3>
-            <p className="text-muted-foreground mb-4">Votre billet est prêt. Téléchargez-le ci-dessous.</p>
-            <div className="bg-white p-4 rounded-lg shadow-inner">
-              <TicketComponent
-                ref={ticketRef}
-                ticketId={ticketId}
-                eventName="Célébration du 30ème anniversaire"
-                eventDate={`${eventDate} - ${eventTime}`}
-                eventLocation={eventLocation}
-                quantity={ticketCount}
-              />
+            <p className="text-muted-foreground mb-6">Vos billets sont prêts. Téléchargez-les ci-dessous.</p>
+            <div className="space-y-8 max-h-[50vh] overflow-y-auto p-1">
+              {Array.from({ length: ticketCount }).map((_, index) => {
+                const ticketId = `${baseTicketId}-${index + 1}`;
+                return (
+                  <div key={ticketId} className="space-y-4">
+                    <div className="bg-white p-4 rounded-lg shadow-inner">
+                      <TicketComponent
+                        ref={(el) => (ticketRefs.current[index] = el)}
+                        ticketId={ticketId}
+                        eventName="Célébration du 30ème anniversaire"
+                        eventDate={`${eventDate} - ${eventTime}`}
+                        eventLocation={eventLocation}
+                        quantity={1}
+                      />
+                    </div>
+                    <Button 
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" 
+                      onClick={() => handleDownloadPdf(ticketRefs.current[index], ticketId)}
+                    >
+                      Télécharger le billet {index + 1} <Download className="ml-2 h-4 w-4" />
+                    </Button>
+                  </div>
+                );
+              })}
             </div>
-            <Button size="lg" className="w-full mt-6 bg-primary hover:bg-primary/90 text-primary-foreground" onClick={handleDownloadPdf}>
-              Télécharger le billet PDF <Download className="ml-2 h-4 w-4" />
-            </Button>
           </div>
         );
     }
