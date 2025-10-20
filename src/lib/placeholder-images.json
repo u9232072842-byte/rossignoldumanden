@@ -9,7 +9,7 @@
     {
       "id": "about-portrait",
       "description": "A portrait of Djessou Manding for the about section",
-      "imageUrl": "/images/about-portrait.png",
+      "imageUrl": "/images/manager-portrait.png",
       "imageHint": "musician portrait"
     },
     {
@@ -39,7 +39,7 @@
     {
       "id": "manager-portrait",
       "description": "A professional portrait of the manager, Diabaté Bangaly Fodé.",
-      "imageUrl": "/images/manager-portrait.png",
+      "imageUrl": "/images/gallery-5.png",
       "imageHint": "manager portrait"
     },
     {
