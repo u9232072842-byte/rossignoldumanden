@@ -168,14 +168,14 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-10 lg:grid-cols-2 lg:gap-16 items-center">
               <div className="flex items-center justify-center order-last lg:order-first">
-                 <div className="relative p-2 rounded-xl bg-card shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-[3deg] glowing-border">
+                 <div className="relative p-2 rounded-xl bg-card shadow-2xl transition-transform duration-500 hover:scale-105 hover:rotate-[3deg] glowing-border max-w-xs w-full">
                   {managerImage && (
                     <Image
                       src={managerImage.imageUrl}
                       alt={managerImage.description}
                       width={400}
                       height={500}
-                      className="rounded-lg object-cover aspect-[4/5]"
+                      className="rounded-lg object-cover aspect-[4/5] w-full"
                     />
                   )}
                 </div>
