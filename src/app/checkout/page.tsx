@@ -128,14 +128,11 @@ export default function CheckoutPage() {
              <Card>
                 <CardHeader>
                     <CardTitle>Informations de paiement</CardTitle>
-                    <CardDescription>Sélectionnez votre mode de paiement.</CardDescription>
+                    <CardDescription>Paiement sécurisé par Stripe.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={handlePayment} disabled={!customerInfo.name || !customerInfo.email}>
+                    <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={handlePayment} disabled={!customerInfo.name || !customerInfo.email}>
                         Payer {totalPrice.toFixed(2)} € avec Stripe
-                    </Button>
-                    <Button size="lg" className="w-full bg-sky-600 hover:bg-sky-700 text-white" onClick={handlePayment} disabled={!customerInfo.name || !customerInfo.email}>
-                        Payer {totalPrice.toFixed(2)} € avec PayPal
                     </Button>
                 </CardContent>
                  <CardFooter>

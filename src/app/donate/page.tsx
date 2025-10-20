@@ -87,13 +87,10 @@ export default function DonatePage() {
         return (
           <CardContent className="p-8">
               <h3 className="font-headline text-xl mb-4 text-center">Paiement simulé</h3>
-              <p className="text-center text-muted-foreground mb-6">Sélectionnez un mode de paiement pour finaliser votre don de {amount} €.</p>
+              <p className="text-center text-muted-foreground mb-6">Finalisez votre don de {amount} € via Stripe.</p>
               <div className="space-y-4">
-                  <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setStep('confirmation')}>
+                  <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => setStep('confirmation')}>
                       Payer avec Stripe
-                  </Button>
-                  <Button size="lg" className="w-full bg-sky-600 hover:bg-sky-700 text-white" onClick={() => setStep('confirmation')}>
-                      Payer avec PayPal
                   </Button>
                   <Button variant="outline" className="w-full" onClick={() => setStep('amount')}>
                     Retour

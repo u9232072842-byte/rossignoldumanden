@@ -80,13 +80,10 @@ export default function EventDetailPage() {
         return (
             <>
                 <h3 className="font-headline text-xl mb-4 text-center">Paiement simulé</h3>
-                <p className="text-center text-muted-foreground mb-6">Sélectionnez un mode de paiement pour finaliser votre achat.</p>
+                <p className="text-center text-muted-foreground mb-6">Finalisez votre achat via notre partenaire de paiement sécurisé Stripe.</p>
                 <div className="space-y-4">
-                    <Button size="lg" className="w-full bg-blue-600 hover:bg-blue-700 text-white" onClick={() => setPurchaseStep('confirmation')}>
+                    <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => setPurchaseStep('confirmation')}>
                         Payer avec Stripe
-                    </Button>
-                    <Button size="lg" className="w-full bg-sky-600 hover:bg-sky-700 text-white" onClick={() => setPurchaseStep('confirmation')}>
-                        Payer avec PayPal
                     </Button>
                 </div>
             </>
