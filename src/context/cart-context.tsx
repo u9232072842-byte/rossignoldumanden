@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { createContext, useContext, useState, useMemo } from 'react';
+import React, { createContext, useContext, useState, useMemo, useEffect } from 'react';
 import type { Product, CartItem } from '@/lib/types';
 import { useToast } from "@/hooks/use-toast"
 
@@ -22,7 +22,27 @@ const CartContext = createContext<CartContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartOpen, setCartOpen] = useState(false);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
   const { toast } = useToast();
+
+  useEffect(() => {
+    try {
+      const storedCart = localStorage.getItem('cart');
+      if (storedCart) {
+        setCartItems(JSON.parse(storedCart));
+      }
+    } catch (error) {
+      console.error("Failed to parse cart from localStorage", error);
+    }
+    setIsInitialLoad(false);
+  }, []);
+
+  useEffect(() => {
+    if (!isInitialLoad) {
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+    }
+  }, [cartItems, isInitialLoad]);
+
 
   const addToCart = (item: Product & { size?: string, color?: string }) => {
     setCartItems(prevItems => {
