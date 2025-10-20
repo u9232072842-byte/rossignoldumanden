@@ -28,7 +28,7 @@ const TicketComponent = forwardRef<HTMLDivElement, TicketComponentProps>(
           {/* Top Section */}
           <div className="flex justify-between items-start pb-4 border-b border-primary/20 border-dashed">
             <div>
-              <p className="text-xs uppercase tracking-widest text-primary font-semibold">Djessou M. Diabate</p>
+              <p className="text-sm uppercase tracking-widest text-primary font-bold">Bfmusic</p>
               <h2 className="font-headline text-3xl font-bold text-white leading-tight">{eventName}</h2>
             </div>
             <Music className="w-8 h-8 text-primary shrink-0" />
@@ -73,7 +73,7 @@ const TicketComponent = forwardRef<HTMLDivElement, TicketComponentProps>(
         
         {/* Bottom Section */}
         <div className="bg-black/20 px-6 py-3 text-center">
-            <p className="font-mono text-xs text-primary/70 tracking-widest">{ticketId}</p>
+            <p className="font-mono text-xs text-primary/70 tracking-widest">N° {ticketId}</p>
         </div>
       </div>
     );
