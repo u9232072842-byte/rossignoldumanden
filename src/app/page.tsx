@@ -175,7 +175,7 @@ export default function Home() {
                       alt={managerImage.description}
                       width={400}
                       height={500}
-                      className="rounded-lg object-cover aspect-[4/5]"
+                      className="rounded-lg"
                       />
                   )}
                 </div>
