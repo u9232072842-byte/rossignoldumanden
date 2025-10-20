@@ -10,8 +10,14 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 
+const MessageSchema = z.object({
+  role: z.enum(['user', 'assistant']),
+  content: z.string(),
+});
+
 const AssistantInputSchema = z.object({
   query: z.string().describe("La question de l'utilisateur sur Djessou Mama Diabate."),
+  history: z.array(MessageSchema).optional().describe('Historique de la conversation.'),
 });
 export type AssistantInput = z.infer<typeof AssistantInputSchema>;
 
@@ -36,7 +42,15 @@ const prompt = ai.definePrompt({
   - Famille : Née dans une famille de griots. Son fils, Diabaté Bangaly Fodé, est son manager et le PDG de BF France.
   - Événement marquant : Un concert pour le 30ème anniversaire est prévu le 8 novembre 2025 au Grand Rex à Paris.
 
-  Répondez à la question suivante de l'utilisateur de manière concise et informative.
+  {{#if history}}
+  Voici l'historique de la conversation :
+  {{#each history}}
+  {{#if (eq role 'user')}}Utilisateur : {{content}}{{/if}}
+  {{#if (eq role 'assistant')}}Assistant : {{content}}{{/if}}
+  {{/each}}
+  {{/if}}
+
+  Répondez à la question suivante de l'utilisateur de manière concise et informative, en tenant compte de l'historique.
   
   Question de l'utilisateur : {{{query}}}
   `,
