@@ -27,7 +27,7 @@
     {
       "id": "event-paris",
       "description": "Concert hall for the 30th anniversary event in Paris",
-      "imageUrl": "/images/event-paris.png",
+      "imageUrl": "/event-paris.png",
       "imageHint": "concert hall"
     },
     {
