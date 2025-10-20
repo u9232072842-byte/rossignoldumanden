@@ -60,11 +60,11 @@ export default function Home() {
           </Carousel>
           <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
           <div className="absolute inset-0 flex flex-col items-center justify-end text-center p-4 pb-20 md:pb-24">
-            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-gray-800" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+            <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
               Djessou Mama Diabate
             </h1>
-            <p className="mt-2 text-lg md:text-xl text-gray-900 font-medium" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.2)' }}>Le Rossignol du Manding</p>
-            <p className="mt-4 max-w-2xl text-md md:text-lg text-gray-800" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.2)' }}>
+            <p className="mt-2 text-lg md:text-xl text-white font-medium" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>Le Rossignol du Manding</p>
+            <p className="mt-4 max-w-2xl text-md md:text-lg text-white" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.5)' }}>
               Célébrant 30 ans de la voix d'or. Vivez l'héritage, la musique, l'âme.
             </p>
             <div className="mt-8">
@@ -237,4 +237,5 @@ export default function Home() {
   );
 }
 
+    
     
