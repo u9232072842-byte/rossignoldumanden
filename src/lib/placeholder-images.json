@@ -2,9 +2,9 @@
   "placeholderImages": [
     {
       "id": "hero-artist",
-      "description": "A portrait of Djessou Manding",
-      "imageUrl": "/images/hero-artist.png",
-      "imageHint": "musician portrait"
+      "description": "Djessou Mama Diabate performing on stage with a microphone.",
+      "imageUrl": "/images/gallery-1.png",
+      "imageHint": "singer stage"
     },
     {
       "id": "about-portrait",
@@ -20,9 +20,9 @@
     },
     {
       "id": "hero-crowd",
-      "description": "Djessou Manding performing for a large crowd",
-      "imageUrl": "/images/hero-crowd.png",
-      "imageHint": "concert crowd"
+      "description": "Djessou Mama Diabate with her band in the background.",
+      "imageUrl": "/images/gallery-5.png",
+      "imageHint": "musician band"
     },
     {
       "id": "event-paris",
