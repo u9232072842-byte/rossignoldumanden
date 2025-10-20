@@ -33,7 +33,6 @@ export default function Header() {
   const navLinks = [
     { href: '/#events', label: 'Événements', icon: Calendar },
     { href: '/gallery', label: 'Galerie', icon: ImageIcon },
-    { href: '/albums', label: 'Albums', icon: Music },
     { href: '/shop', label: 'Boutique', icon: ShoppingBag },
     { href: '/donate', label: 'Soutenir', icon: Heart },
   ];
