@@ -14,7 +14,7 @@ import * as React from 'react';
 
 export default function Home() {
   const heroImages = PlaceHolderImages.filter(p => p.id.startsWith('hero-'));
-  const eventImage = PlaceHolderImages.find(p => p.id === 'event-paris-flyer');
+  const eventImage = PlaceHolderImages.find(p => p.id === 'event-paris');
   const aboutImage = PlaceHolderImages.find(p => p.id === 'about-portrait');
   const managerImage = PlaceHolderImages.find(p => p.id === 'manager-portrait');
 
@@ -124,13 +124,13 @@ export default function Home() {
             <div className="mx-auto grid max-w-5xl items-start gap-8 sm:grid-cols-1 md:gap-12 lg:max-w-none lg:grid-cols-1 mt-12">
               <Card className="w-full max-w-5xl mx-auto overflow-hidden shadow-2xl hover:shadow-primary/20 transition-shadow duration-300 border-border/50">
                 <div className="grid md:grid-cols-2">
-                   <div className="md:col-span-1 relative min-h-[400px] md:min-h-0 md:aspect-[9/16] bg-black p-2">
+                   <div className="md:col-span-1 relative min-h-[400px] md:min-h-0 md:aspect-video">
                     {eventImage && (
                       <Image
                         src={eventImage.imageUrl}
                         alt={eventImage.description}
                         fill
-                        className="object-contain"
+                        className="object-cover"
                       />
                     )}
                   </div>
@@ -236,3 +236,5 @@ export default function Home() {
     </div>
   );
 }
+
+    
