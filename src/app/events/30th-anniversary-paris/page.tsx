@@ -17,7 +17,6 @@ export default function EventDetailPage() {
   const [ticketCount, setTicketCount] = useState(1);
   const [purchaseStep, setPurchaseStep] = useState('details'); // details, payment, confirmation
   
-  // We'll now use an array of refs, one for each ticket
   const ticketRefs = useRef<Array<HTMLDivElement | null>>([]);
 
 
