@@ -28,7 +28,7 @@ const products: Product[] = [
     },
      {
       id: 'hoodie',
-      name: "Sweat-shirt Signature 'Héritage'",
+      name: "Pull (Sweat-shirt) Signature 'Héritage'",
       price: 60.00,
       description: "Sweat-shirt à capuche confortable et stylé, portant une citation inspirante de Djessou Mama. Idéal pour les soirées fraîches et les moments de détente.",
       images: PlaceHolderImages.filter(p => p.id.startsWith('merch-hoodie-')),
@@ -37,22 +37,6 @@ const products: Product[] = [
         size: ['S', 'M', 'L', 'XL'],
         color: ['#111827', '#FFFFFF', '#4B5563'],
       }
-    },
-    {
-      id: 'vinyl',
-      name: "Vinyle LP 'Golden Voice'",
-      price: 45.00,
-      description: "Édition limitée en vinyle de la compilation 'Golden Voice', regroupant les plus grands succès de l'artiste. Un objet de collection pour les audiophiles et les amateurs de musique.",
-      images: PlaceHolderImages.filter(p => p.id.startsWith('merch-vinyl-')),
-      category: 'musique',
-    },
-     {
-      id: 'book',
-      name: "Livre biographique '30 Ans de Voix'",
-      price: 55.00,
-      description: "Un magnifique livre illustré retraçant les 30 ans de carrière de Djessou Mama, avec des photos inédites, des anecdotes et des témoignages exclusifs.",
-      images: PlaceHolderImages.filter(p => p.id.startsWith('merch-book-')),
-      category: 'musique',
     },
     {
       id: 'tote',
