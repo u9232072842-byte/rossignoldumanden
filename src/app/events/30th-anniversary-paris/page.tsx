@@ -6,18 +6,22 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { Calendar, MapPin, Ticket, CreditCard, Minus, Plus, Download, Clock } from 'lucide-react';
+import { Calendar, MapPin, Ticket, CreditCard, Minus, Plus, Download, Clock, Loader2 } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import TicketComponent from '@/components/ticket';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { createCheckoutSession } from '@/ai/flows/stripe-flow';
+import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 export default function EventDetailPage() {
   const eventImage = PlaceHolderImages.find((p) => p.id === 'event-paris-flyer');
   const [ticketCount, setTicketCount] = useState(1);
-  const [purchaseStep, setPurchaseStep] = useState('details'); // details, payment, confirmation
-  
+  const [isLoading, setIsLoading] = useState(false);
   const ticketRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const { toast } = useToast();
+  const router = useRouter();
 
 
   const ticketPrice = 25.00;
@@ -30,96 +34,44 @@ export default function EventDetailPage() {
     setTicketCount((prev) => Math.max(1, prev + amount));
   };
 
-  const handleDownloadPdf = async (element: HTMLElement | null, ticketId: string) => {
-    if (!element) return;
+  const handlePayment = async () => {
+    setIsLoading(true);
+    try {
+        const lineItems = [{
+            name: "Billet: Célébration du 30ème anniversaire",
+            description: `Date: ${eventDate} à ${eventTime}`,
+            amount: Math.round(ticketPrice * 100),
+            quantity: ticketCount,
+            images: eventImage ? [eventImage.imageUrl] : [],
+        }];
 
-    const canvas = await html2canvas(element, { scale: 2 });
-    const data = canvas.toDataURL('image/png');
+        const { url } = await createCheckoutSession({ 
+            lineItems, 
+            metadata: { 
+                type: 'ticket', 
+                event: '30th-anniversary-paris',
+                quantity: String(ticketCount)
+            } 
+        });
 
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
-    
-    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save(`billet-${ticketId}.pdf`);
-  };
-
-  const renderStep = () => {
-    switch (purchaseStep) {
-      case 'details':
-        return (
-          <>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Prix du billet</span>
-              <span className="font-bold">{ticketPrice.toFixed(2)} €</span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-muted-foreground">Quantité</span>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => handleTicketChange(-1)}>
-                  <Minus className="h-4 w-4" />
-                </Button>
-                <span className="font-bold w-8 text-center">{ticketCount}</span>
-                <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => handleTicketChange(1)}>
-                  <Plus className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-            <Separator />
-            <div className="flex items-center justify-between text-xl">
-              <span className="font-headline">Total</span>
-              <span className="font-bold">{(ticketPrice * ticketCount).toFixed(2)} €</span>
-            </div>
-            <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => setPurchaseStep('payment')}>
-              Procéder au paiement <CreditCard className="ml-2 h-4 w-4" />
-            </Button>
-          </>
-        );
-      case 'payment':
-        return (
-            <>
-                <h3 className="font-headline text-xl mb-4 text-center">Paiement simulé</h3>
-                <p className="text-center text-muted-foreground mb-6">Finalisez votre achat via notre partenaire de paiement sécurisé Stripe.</p>
-                <div className="space-y-4">
-                    <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={() => setPurchaseStep('confirmation')}>
-                        Payer avec Stripe
-                    </Button>
-                </div>
-            </>
-        );
-      case 'confirmation':
-        const baseTicketId = `DMD-30ANS-${Date.now()}`;
-        return (
-          <div className="text-center">
-            <h3 className="font-headline text-2xl mb-2">Achat confirmé !</h3>
-            <p className="text-muted-foreground mb-6">Vos billets sont prêts. Téléchargez-les ci-dessous.</p>
-            <div className="space-y-8 max-h-[50vh] overflow-y-auto p-1">
-              {Array.from({ length: ticketCount }).map((_, index) => {
-                const ticketId = `${baseTicketId}-${index + 1}`;
-                return (
-                  <div key={ticketId} className="space-y-4">
-                    <div className="bg-white p-4 rounded-lg shadow-inner">
-                      <TicketComponent
-                        ref={(el) => (ticketRefs.current[index] = el)}
-                        ticketId={ticketId}
-                        eventName="Célébration du 30ème anniversaire"
-                        eventDate={`${eventDate} - ${eventTime}`}
-                        eventLocation={eventLocation}
-                        quantity={1}
-                      />
-                    </div>
-                    <Button 
-                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" 
-                      onClick={() => handleDownloadPdf(ticketRefs.current[index], ticketId)}
-                    >
-                      Télécharger le billet {index + 1} <Download className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        );
+        if (url) {
+            router.push(url);
+        } else {
+            toast({
+                variant: "destructive",
+                title: "Erreur de paiement",
+                description: "Impossible d'initier la session de paiement. Veuillez réessayer.",
+            });
+        }
+    } catch (error) {
+        console.error("Stripe checkout error:", error);
+        toast({
+            variant: "destructive",
+            title: "Erreur inattendue",
+            description: "Une erreur s'est produite lors du paiement. Veuillez contacter le support.",
+        });
+    } finally {
+        setIsLoading(false);
     }
   };
 
@@ -167,7 +119,31 @@ export default function EventDetailPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-                {renderStep()}
+                <div className="flex items-center justify-between">
+                  <span className="text-muted-foreground">Prix du billet</span>
+                  <span className="font-bold">{ticketPrice.toFixed(2)} €</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-muted-foreground">Quantité</span>
+                  <div className="flex items-center gap-2">
+                    <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => handleTicketChange(-1)} disabled={isLoading}>
+                      <Minus className="h-4 w-4" />
+                    </Button>
+                    <span className="font-bold w-8 text-center">{ticketCount}</span>
+                    <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => handleTicketChange(1)} disabled={isLoading}>
+                      <Plus className="h-4 w-4" />
+                    </Button>
+                  </div>
+                </div>
+                <Separator />
+                <div className="flex items-center justify-between text-xl">
+                  <span className="font-headline">Total</span>
+                  <span className="font-bold">{(ticketPrice * ticketCount).toFixed(2)} €</span>
+                </div>
+                <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={handlePayment} disabled={isLoading}>
+                  {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <CreditCard className="ml-2 h-4 w-4" />}
+                  Procéder au paiement
+                </Button>
             </CardContent>
           </Card>
         </div>

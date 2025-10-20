@@ -9,45 +9,63 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Loader2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
+import { createCheckoutSession } from '@/ai/flows/stripe-flow';
+import { useToast } from '@/hooks/use-toast';
+import { useRouter } from 'next/navigation';
 
 export default function CheckoutPage() {
   const { cartItems, totalPrice, clearCart } = useCart();
-  const [step, setStep] = useState('form'); // form, confirmation
   const [customerInfo, setCustomerInfo] = useState({ name: '', email: ''});
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+  const router = useRouter();
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setCustomerInfo(prev => ({ ...prev, [id]: value }));
   }
 
-  const handlePayment = () => {
-    // In a real app, you would process the payment here.
-    // For this simulation, we'll just move to the confirmation step.
-    setStep('confirmation');
-    clearCart(); // Clear the cart after "payment"
-  };
+  const handlePayment = async () => {
+    setIsLoading(true);
+    try {
+      const lineItems = cartItems.map(item => ({
+        name: item.product.name,
+        description: `${item.size ? `Taille: ${item.size}` : ''} ${item.color ? `Couleur: ${item.color}` : ''}`.trim(),
+        amount: Math.round(item.product.price * 100), // Stripe expects amount in cents
+        quantity: item.quantity,
+        images: item.product.images.length > 0 ? [item.product.images[0].imageUrl] : [],
+      }));
 
-  if (step === 'confirmation') {
-    return (
-      <div className="container py-12 md:py-24 text-center">
-        <Card className="max-w-2xl mx-auto p-8">
-            <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-            <h1 className="text-3xl font-headline font-bold mb-2">Merci pour votre commande !</h1>
-            <p className="text-muted-foreground mb-4">
-                Votre commande a été passée avec succès. Un e-mail de confirmation a été envoyé à {customerInfo.email}.
-            </p>
-            <Button asChild>
-                <Link href="/">Retour à l'accueil</Link>
-            </Button>
-        </Card>
-      </div>
-    );
-  }
+      const { url } = await createCheckoutSession({ lineItems, metadata: { customer_name: customerInfo.name, customer_email: customerInfo.email } });
+      
+      if (url) {
+        clearCart();
+        router.push(url);
+      } else {
+         toast({
+            variant: "destructive",
+            title: "Erreur de paiement",
+            description: "Impossible d'initier la session de paiement. Veuillez réessayer.",
+        });
+      }
+
+    } catch (error) {
+       console.error("Stripe checkout error:", error);
+       toast({
+            variant: "destructive",
+            title: "Erreur inattendue",
+            description: "Une erreur s'est produite lors du paiement. Veuillez contacter le support.",
+        });
+    } finally {
+        setIsLoading(false);
+    }
+  };
   
-  if(cartItems.length === 0 && step !== 'confirmation'){
+  if(cartItems.length === 0){
     return (
         <div className="container py-12 md:py-24 text-center">
              <h1 className="text-3xl font-headline font-bold mb-2">Votre panier est vide</h1>
@@ -117,11 +135,11 @@ export default function CheckoutPage() {
                 <CardContent className="space-y-4">
                      <div>
                         <Label htmlFor="name">Nom complet</Label>
-                        <Input id="name" type="text" placeholder="Votre nom complet" value={customerInfo.name} onChange={handleInputChange} />
+                        <Input id="name" type="text" placeholder="Votre nom complet" value={customerInfo.name} onChange={handleInputChange} disabled={isLoading}/>
                     </div>
                     <div>
                         <Label htmlFor="email">Adresse e-mail</Label>
-                        <Input id="email" type="email" placeholder="Votre e-mail" value={customerInfo.email} onChange={handleInputChange} />
+                        <Input id="email" type="email" placeholder="Votre e-mail" value={customerInfo.email} onChange={handleInputChange} disabled={isLoading} />
                     </div>
                 </CardContent>
             </Card>
@@ -131,13 +149,14 @@ export default function CheckoutPage() {
                     <CardDescription>Paiement sécurisé par Stripe.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={handlePayment} disabled={!customerInfo.name || !customerInfo.email}>
-                        Payer {totalPrice.toFixed(2)} € avec Stripe
+                    <Button size="lg" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground" onClick={handlePayment} disabled={!customerInfo.name || !customerInfo.email || isLoading}>
+                        {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
+                        Payer {totalPrice.toFixed(2)} €
                     </Button>
                 </CardContent>
                  <CardFooter>
                     <p className="text-xs text-muted-foreground">
-                        Ceci est une simulation. Aucune transaction réelle ne sera effectuée.
+                        Vous serez redirigé vers une page de paiement sécurisée Stripe.
                     </p>
                 </CardFooter>
             </Card>
