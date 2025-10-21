@@ -2,10 +2,10 @@
 'use client';
 // Your web app's Firebase configuration
 export const firebaseConfig = {
-  apiKey: "AIzaSyCu_OkIVCbPoHSRsMS05y6_o70HXL11MtU",
-  authDomain: "studio-802027406-359d8.firebaseapp.com",
-  projectId: "studio-802027406-359d8",
-  storageBucket: "studio-802027406-359d8.appspot.com",
-  messagingSenderId: "892362186461",
-  appId: "1:892362186461:web:1cf17164a9064e0b958534"
+  apiKey: "AIzaSyANJ0VNtq5HGtcPZGow3-Vv7Fn3aiXfHYA",
+  authDomain: "savannah-nightingale.firebaseapp.com",
+  projectId: "savannah-nightingale",
+  storageBucket: "savannah-nightingale.appspot.com",
+  messagingSenderId: "295789507854",
+  appId: "1:295789507854:web:e03ac885a631457359935f"
 };
