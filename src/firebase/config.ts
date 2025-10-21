@@ -1,4 +1,3 @@
-
 'use client';
 // Your web app's Firebase configuration
 export const firebaseConfig = {
@@ -7,5 +6,5 @@ export const firebaseConfig = {
   projectId: "savannah-nightingale",
   storageBucket: "savannah-nightingale.appspot.com",
   messagingSenderId: "295789507854",
-  appId: "1:295789507854:web:e03ac885a631457359935f"
+  appId: "1:295789507854:web:b73e46784589e33359935f"
 };
