@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 import { createCheckoutSession } from '@/ai/flows/stripe-flow';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { useUser } from '@/firebase/auth/use-user';
 
 export default function DonatePage() {
   const supportImage = PlaceHolderImages.find(p => p.id === 'hero-artist');
@@ -21,6 +22,7 @@ export default function DonatePage() {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
+  const { user } = useUser();
   
   const suggestedAmounts = [10, 20, 50, 100];
 
@@ -39,6 +41,15 @@ export default function DonatePage() {
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+     if (!user) {
+        toast({
+            variant: "destructive",
+            title: "Connexion requise",
+            description: "Vous devez être connecté pour faire un don.",
+        });
+        router.push('/login');
+        return;
+    }
     setIsLoading(true);
     try {
       const lineItems = [{
@@ -48,7 +59,7 @@ export default function DonatePage() {
         quantity: 1,
       }];
       
-      const { url } = await createCheckoutSession({ lineItems, metadata: { type: 'donation' } });
+      const { url } = await createCheckoutSession({ lineItems, metadata: { type: 'donation', userId: user.uid } });
 
       if (url) {
         router.push(url);

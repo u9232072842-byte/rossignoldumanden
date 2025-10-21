@@ -14,6 +14,7 @@ import html2canvas from 'html2canvas';
 import { createCheckoutSession } from '@/ai/flows/stripe-flow';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { useUser } from '@/firebase/auth/use-user';
 
 export default function EventDetailPage() {
   const eventImage = PlaceHolderImages.find((p) => p.id === 'event-paris-flyer');
@@ -22,6 +23,7 @@ export default function EventDetailPage() {
   const ticketRefs = useRef<Array<HTMLDivElement | null>>([]);
   const { toast } = useToast();
   const router = useRouter();
+  const { user } = useUser();
 
 
   const ticketPrice = 25.00;
@@ -35,6 +37,16 @@ export default function EventDetailPage() {
   };
 
   const handlePayment = async () => {
+    if (!user) {
+        toast({
+            variant: "destructive",
+            title: "Connexion requise",
+            description: "Vous devez être connecté pour acheter des billets.",
+        });
+        router.push('/login');
+        return;
+    }
+
     setIsLoading(true);
     try {
         const lineItems = [{
@@ -50,7 +62,8 @@ export default function EventDetailPage() {
             metadata: { 
                 type: 'ticket', 
                 event: '30th-anniversary-paris',
-                quantity: String(ticketCount)
+                quantity: String(ticketCount),
+                userId: user.uid,
             } 
         });
 

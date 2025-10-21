@@ -1,7 +1,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useCart } from '@/context/cart-context';
 import { Button } from '@/components/ui/button';
@@ -9,19 +9,44 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter }
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { createCheckoutSession } from '@/ai/flows/stripe-flow';
 import { useToast } from '@/hooks/use-toast';
 import { useRouter } from 'next/navigation';
+import { useUser } from '@/firebase/auth/use-user';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function CheckoutPage() {
   const { cartItems, totalPrice, clearCart } = useCart();
+  const { user, loading: userLoading } = useUser();
+  const router = useRouter();
+  
   const [customerInfo, setCustomerInfo] = useState({ name: '', email: ''});
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-  const router = useRouter();
+
+  useEffect(() => {
+    if (!userLoading && !user) {
+      toast({
+        variant: "destructive",
+        title: "Connexion requise",
+        description: "Vous devez être connecté pour accéder au paiement.",
+      });
+      router.push('/login');
+    }
+  }, [user, userLoading, router, toast]);
+
+  useEffect(() => {
+    if (user) {
+        setCustomerInfo(prev => ({
+            ...prev,
+            name: user.displayName || prev.name,
+            email: user.email || prev.email,
+        }));
+    }
+  }, [user]);
 
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +65,7 @@ export default function CheckoutPage() {
         images: item.product.images.length > 0 ? [item.product.images[0].imageUrl] : [],
       }));
 
-      const { url } = await createCheckoutSession({ lineItems, metadata: { customer_name: customerInfo.name, customer_email: customerInfo.email } });
+      const { url } = await createCheckoutSession({ lineItems, metadata: { customer_name: customerInfo.name, customer_email: customerInfo.email, userId: user?.uid } });
       
       if (url) {
         clearCart();
@@ -64,8 +89,26 @@ export default function CheckoutPage() {
         setIsLoading(false);
     }
   };
+
+  if(userLoading) {
+    return (
+        <div className="container py-12 md:py-24">
+             <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div className="space-y-6">
+                    <Skeleton className="h-8 w-64" />
+                    <Skeleton className="h-64 w-full" />
+                </div>
+                <div className="space-y-6">
+                    <Skeleton className="h-8 w-32" />
+                    <Skeleton className="h-48 w-full" />
+                    <Skeleton className="h-48 w-full" />
+                </div>
+             </div>
+        </div>
+    )
+  }
   
-  if(cartItems.length === 0){
+  if(cartItems.length === 0 && !userLoading){
     return (
         <div className="container py-12 md:py-24 text-center">
              <h1 className="text-3xl font-headline font-bold mb-2">Votre panier est vide</h1>

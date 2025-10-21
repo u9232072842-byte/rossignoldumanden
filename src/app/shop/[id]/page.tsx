@@ -3,7 +3,7 @@
 
 import { useState, useRef } from 'react';
 import Image from 'next/image';
-import { notFound, useParams } from 'next/navigation';
+import { notFound, useParams, useRouter } from 'next/navigation';
 import { getProducts } from '@/lib/products';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -16,12 +16,17 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import Autoplay from "embla-carousel-autoplay"
 import { cn } from '@/lib/utils';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { useUser } from '@/firebase/auth/use-user';
+import { useToast } from '@/hooks/use-toast';
 
 export default function ProductDetailPage() {
   const params = useParams();
   const products = getProducts();
   const product = products.find((p) => p.id === String(params.id));
   const { addToCart } = useCart();
+  const { user } = useUser();
+  const router = useRouter();
+  const { toast } = useToast();
   
   const [selectedSize, setSelectedSize] = useState<string | undefined>(product?.variants?.size?.[0]);
   const [selectedColor, setSelectedColor] = useState<string | undefined>(product?.variants?.color?.[0]);
@@ -32,7 +37,17 @@ export default function ProductDetailPage() {
     notFound();
   }
 
-  const handleAddToCart = () => {    
+  const handleAddToCart = () => {
+    if (!user) {
+        toast({
+            variant: "destructive",
+            title: "Connexion requise",
+            description: "Vous devez être connecté pour ajouter des articles au panier.",
+        });
+        router.push('/login');
+        return;
+    }
+    
     addToCart({
       ...product,
       size: selectedSize,
